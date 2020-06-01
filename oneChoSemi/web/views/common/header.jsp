@@ -122,7 +122,7 @@
         <button onclick="topFunction()" id="top-btn" title="Go to top">Top</button>
         <!--로고 이미지-->
         <div id="mainlogo">
-            <img src="images/logo.png" class="img-fluid" alt="Responsive image" style="width: 150px; height: 100px; margin-top: 40px;">
+            <img src="<%=request.getContextPath() %>/images/logo.png" class="img-fluid" alt="Responsive image" style="width: 150px; height: 100px; margin-top: 40px;">
         </div>
         <!--상단 navbar-->
         <div style="position: relative;">

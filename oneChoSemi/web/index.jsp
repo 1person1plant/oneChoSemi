@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<%@ include file="views/header.jsp" %>
-<%@ include file="views/main.jsp" %>
-<%@ include file="views/footer.jsp" %>
+<%@ include file="views/common/header.jsp" %>
+<%@ include file="views/common/main.jsp" %>
+<%@ include file="views/common/footer.jsp" %>
 
 
 </body>
