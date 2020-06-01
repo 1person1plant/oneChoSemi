@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <title>Cho-당신을 위한 반려식물</title>
 <!--타이틀 아이콘-->
-<link rel="shortcut icon" type="image⁄x-icon" href="../../images/logo.png">
+<link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
 
 <!-- 아이콘 -->
 <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
@@ -176,7 +176,7 @@
     }
 
     .orderinfo-Recipient .addrsearch {
-        background: url("../../images/bootstrapicons/bi-search.svg") no-repeat center;
+        background: url("<%=request.getContextPath() %>/images/bootstrapicons/bi-search.svg") no-repeat center;
         border: none;
         width: 35px;
         height: 35px;
@@ -397,7 +397,7 @@
 <!-- data sample -->
 <script>
     // 상품 정보
-    var orderItem_img = "../../images/고무나무.jpg";
+    var orderItem_img = "<%=request.getContextPath() %>/images/고무나무.jpg";
     var orderItem_title = "멜라닌고무나무 라탄바구니 세트";
     var orderItem_count = "1";
     var orderItem_price = "32000";
@@ -446,7 +446,7 @@
 	            <tbody>
 	                <tr>
 	                    <td rowspan="3" class="orderimg">
-	                        <img class="orderItem_img" src="../../images/고무나무.jpg" alt="상품1">
+	                        <img class="orderItem_img" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품1">
 	                    </td>
 	                    <td colspan="2" class="orderItem_title"> </td>
 	                </tr>
@@ -590,7 +590,7 @@
 	                        <input type="text" placeholder="주소 찾기" onclick="recipient_execDaumPostcode()" id="recipient_postcode" name="recipient_postcode" required>
 	                        <!-- <button type="button" id="addrsearch" onclick="recipient_execDaumPostcode()" class="addrsearch"></button> -->
 	                        <div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
-	                            <img src="../../images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+	                            <img src="<%=request.getContextPath() %>/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 	                        </div>
 	                    </td>
 	                </tr>

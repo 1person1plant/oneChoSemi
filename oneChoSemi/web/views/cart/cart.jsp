@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <title>Cho-당신을 위한 반려식물</title>
 <!-- 타이틀 아이콘 -->
-<link rel="shortcut icon" type="image⁄x-icon" href="../../images/logo.png">
+<link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- popper -->
@@ -127,7 +127,7 @@
         display: none;
     }
     .trash{
-        background: url("../../images/cart/trash-alt-regular.svg") no-repeat center;
+        background: url("<%=request.getContextPath() %>/images/cart/trash-alt-regular.svg") no-repeat center;
         border: none;
         width: 20px;
         height: 20px;
@@ -259,7 +259,7 @@
 </style>
 <!-- data sample -->
 <script> 
-    var cartitem_img = "../../images/고무나무.jpg";
+    var cartitem_img = "<%=request.getContextPath() %>/images/고무나무.jpg";
     var cartitem_title = "멜라닌고무나무 라탄바구니 세트";
     var cartitem_count = 2;
     var cartitem_price = "32000";
@@ -307,7 +307,7 @@
 	        </tr>
 	        <tr class="cartitem2">
 	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="../../images/고무나무.jpg" alt="상품"></td>
+	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
 	            <td>아이비 수경 재배 세트 2</td>
 	            <td><input class="cart_count" name="cart2" type="number" min="1" max="10" value="1" step="1"></td>
 	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
@@ -315,7 +315,7 @@
 	        </tr>
 	        <tr class="cartitem3">
 	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="../../images/고무나무.jpg" alt="상품"></td>
+	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
 	            <td>아이비 수경 재배 세트 3</td>
 	            <td><input class="cart_count" name="cart3" type="number" min="1" max="10" value="1" step="1"></td>
 	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
@@ -323,7 +323,7 @@
 	        </tr>
 	        <tr class="cartitem4">
 	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="../../images/고무나무.jpg" alt="상품"></td>
+	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
 	            <td>아이비 수경 재배 세트 4</td>
 	            <td><input class="cart_count" name="cart4" type="number" min="1" max="10" value="1" step="1"></td>
 	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
@@ -331,7 +331,7 @@
 	        </tr>
 	        <tr class="cartitem5">
 	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="../../images/고무나무.jpg" alt="상품"></td>
+	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
 	            <td>아이비 수경 재배 세트 5</td>
 	            <td><input class="cart_count" name="cart5" type="number" min="1" max="10" value="1" step="1"></td>
 	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
@@ -498,7 +498,7 @@
 	        <!-- card item 1 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -528,7 +528,7 @@
 	        <!-- card item 2 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -558,7 +558,7 @@
 	        <!-- card item 3 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -588,7 +588,7 @@
 	        <!-- card item 4 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -618,7 +618,7 @@
 	        <!-- card item 5 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -648,7 +648,7 @@
 	        <!-- card item 6 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -678,7 +678,7 @@
 	        <!-- card item 7 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
@@ -708,7 +708,7 @@
 	        <!-- card item 8 -->
 	        <div class="wishcardcol col-md-3 pb-3">
 	            <div class="card">
-	                <img class="card-img-top" src="../../images/고무나무.jpg" alt="Card image cap">
+	                <img class="card-img-top" src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="Card image cap">
 	                <div class="card-body tablepadding">
 	                    <table>
 	                        <tbody>
