@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" initial-scale="1">
@@ -254,12 +255,15 @@
             </div>
         </div>
     </section>
-    <!-- footer -->
-    <footer>
-
-    </footer>
+   
 
 <!-- 토스트와 캐서셀 실행하려면 아래 있어야함... -->
 
 </body>
+
+
+
+
+
+
 </html>
