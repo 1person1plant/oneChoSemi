@@ -2,7 +2,7 @@ package cartList.model.vo;
 
 import java.sql.Date;
 
-public class Cart {
+public class Order {
 	private String orderNo;				// 주문 번호 pk
 	private String itemNo;				// 상품 번호 pk
 
