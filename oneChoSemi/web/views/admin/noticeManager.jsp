@@ -5,28 +5,13 @@
 <head>
 <meta charset="UTF-8">
 
- 		<!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        
-        <!--title icon-->
-        <link rel="shortcut icon" type="image⁄x-icon" href="img_main/logo.png">
-        <title>Cho-당신을 위한 반려식물</title>
-       
-         <!--icon-->
-        <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
-
+ 		
         <!--datatable-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-  
         
-        <!--jQuery-->
+         <!--jQuery-->
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+  
          <!-- include summernote css/js -->
          <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
        
@@ -300,11 +285,24 @@
 </div>
 
 
-<div class="container-fluid" style="margin-top: 100px;">
+<div class="container-fluid">
     <div class="jumbotron text-center" style="background-image:url('<%=request.getContextPath() %>/images/admin/head.jpg'); height: 300px;">
         
     </div>
 </div>
+
+ <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
 
 <!--summerNote-->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -320,8 +318,7 @@
     });
 </script>
 
-
-<!--datatable 관련 script-->
+ <!--datatable 관련 script-->
  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
  <script>
      $(document).ready( function () {
@@ -455,6 +452,5 @@
             })
        
         </script>
-
 </body>
 </html>

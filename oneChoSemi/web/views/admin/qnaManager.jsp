@@ -350,7 +350,7 @@
 
     </div>
 
-    <div class="container-fluid" style="margin-top: 100px;">
+    <div class="container-fluid">
       <div class="jumbotron text-center" style="background-image:url('<%=request.getContextPath() %>/images/admin/head.jpg'); height: 300px;">
         
       </div>
