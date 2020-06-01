@@ -34,6 +34,8 @@
         td.mt-2{
         	text-align:right;
         }
+        
+        /* 좌측 메뉴 리스트 */
        	.list-group a :hover {
             background: #6AAED9;
             color: white;
@@ -63,6 +65,36 @@
         ul .list-group-item :hover {
             color: white;
         }
+        /* 좌측 메뉴 리스트 끝 */
+        
+        /* 등급별 혜택 */
+        .gradecolor{
+          border-top:1px solid gray !important;
+          border-bottom:1px solid gray;
+          background:lightgray;
+          text-align:center;
+        }
+        .aaa{
+          width:20%;
+          text-align:center;
+        }
+
+        .bbb{
+          text-align:center;
+          width:25%;
+        }
+
+        .ccc{
+          text-align:center;
+          width:20%;
+        }
+
+        .ddd{
+          text-align:center;
+        }
+        .lasttr{
+          border-bottom:1px solid lightgray;
+        }
 	</style>
 </head>
 <body>
@@ -80,14 +112,21 @@
 					</div>
 					<!-- 사이드바 메뉴목록1 -->
 					<ul class="list-group">
-						<a href="grade.html"><li class="list-group-item">회원 등급</li></a>
-						<a href="inforchk.html"><li class="list-group-item">개인 정보
-								수정</li></a>
-						<a href="orderchk.html"><li class="list-group-item">주문 내역
-								조회</li></a>
-						<a href="wishlist.html"><li class="list-group-item">위시리스트</li></a>
-						<a href="withdrawal.html"><li class="list-group-item">회원
-								탈퇴</li></a>
+						<a href="grade.jsp">
+                            <li class="list-group-item">회원 등급</li>
+                        </a>
+                        <a href="inforEdit.jsp">
+                            <li class="list-group-item">개인 정보 수정</li>
+                        </a>
+                        <a href="orderHistory.jsp">
+                            <li class="list-group-item">주문 내역 조회</li>
+                        </a>
+                        <a href="wishList.jsp">
+                            <li class="list-group-item">위시리스트</li>
+                        </a>
+                        <a href="withdrawal.jsp">
+                            <li class="list-group-item">회원 탈퇴</li>
+                        </a>
 					</ul>
 				</div>
 
@@ -157,7 +196,6 @@
 									<td class='ccc'>5%</td>
 									<td class='ddd'>15000P</td>
 								</tr>
-
 							</tbody>
 						</table>
 					</form>
