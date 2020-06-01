@@ -160,6 +160,7 @@
                             <a class="nav-link" href="#">로그인</a>
                         </li>
                         <li class="nav-item">
+<!-- HEAD -->
                             <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
                         </li>
                     </ul>
@@ -247,8 +248,94 @@
     	function myPageBtn(){
     		location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
     	}
-    </script>
+                            <a class="nav-link" href="#">마이페이지</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- sticky-top은 header안에서 작동안함 -->
+    <!--하단 nav-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" id="navbar-bot">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fas fa-home"></i> HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ALL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HANGING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PLANT</a>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggler order-first ml-2" type="button" data-toggle="collapse"
+            data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item px-3">
+                    <a class="nav-link" href="#"><i class="fas fa-cart-plus"></i></a>
+                </li>
+            </ul>
 
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="navbotspy spy d-none d-xl-block d-lg-block d-md-block">
+            <div class="navbotspy-progress-container progress-container bg-light">
+                <div class="navbotspy-progress-bar progress-bar" id="myBar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!--user가 scroll 내릴 때 발생하는 function 모음-->
+    <script>
+        // When the user scrolls the page, execute myFunction
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { myFunction() };
+        function myFunction() {
+            //progress bar
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+
+            //gototop button visible
+            if (winScroll > 10) {
+                goToTopBtn.style.display = "block";
+            } else {
+                goToTopBtn.style.display = "none";
+            }
+
+            //navbar-bottom transparent&opaque
+            if (winScroll > 10) {
+                $('#navbar-bot').css('opacity', '0.6');
+
+                $('#navbar-bot').bind('mouseenter', function () {
+                    $('#navbar-bot').css('opacity', '1');
+                }).bind('mouseleave', function () {
+                    $('#navbar-bot').css('opacity', '0.6');
+                })
+            } else {
+                $('#navbar-bot').unbind('mouseenter').unbind('mouseleave');
+                $('#navbar-bot').css('opacity', '1');
+            }
+        }
+    </script>
+	<script>
+		function myPageBtn(){
+			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+		}
+	</script>
 </body>
 
 </html>
