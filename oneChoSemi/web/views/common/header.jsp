@@ -160,7 +160,7 @@
                             <a class="nav-link" href="#">로그인</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">마이페이지</a>
+                            <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
                         </li>
                     </ul>
                 </div>
@@ -242,6 +242,11 @@
                 $('#navbar-bot').css('opacity', '1');
             }
         }
+    </script>
+    <script>
+    	function myPageBtn(){
+    		location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+    	}
     </script>
 
 </body>
