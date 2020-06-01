@@ -39,64 +39,117 @@
 
 <body>
 
-	<%@ include file="../common/header.jsp" %>>
+	<%@ include file="../common/header.jsp" %>
  
   <section>
     
     <!--내용 시작-->
-
-    <div class="container-fluid">
-
-        <h2 style="margin-top: 50px; margin-left: 100px; margin-bottom: 50px;">ADMIN</h2>
-        <div class="row">
-          <div class="col-3">
-            
-            <nav id="navbar-vertical" class="navbar navbar-light bg-light" style="height: 100%; width: 250px;">
-                <nav class="nav nav-pills flex-column" style="margin-top: -55rem; padding: 0;">
-                <a class="navbar-brand" href="admin_main.html" style="color: black;padding: 16px;">MENU</a>
-                  <a class="nav-link" href="#item-1"><i class="fas fa-gifts"></i>상품관리</a>
-                  <nav class="nav nav-pills flex-column">
-                    
-                    <ul>
-                        <hr>
-                        <li><a class="nav-link ml-3 my-1" href="admin_createProduct.html" style="color:#1f598c; font-weight: bold;">상품등록</a></li>
-                        <li><a class="nav-link ml-3 my-1" href="admin.browseProduct.html">상품조회/수정</a></li>
-                        <li><a class="nav-link ml-3 my-1" href="admin.stockManage.html">재고관리</a></li>
-                        <hr>
-                    </ul>
-                  </nav>
-                  <a class="nav-link" href="#item-2"><i class="fas fa-money-check-alt"></i>판매관리</a>
-                  <nav class="nav nav-pills flex-column">
-                    <ul>
-                      <hr>
-                      <li><a class="nav-link ml-3 my-1" href="admin_orderlist.html">주문내역 조회</a></li>
-                      <hr>
-                    </ul>
-                    
-                  </nav>
-                  <a class="nav-link" href="#item-3"><i class="fas fa-users"></i>고객관리</a>
-                  <nav class="nav nav-pills flex-column">
-                    <ul>
-                      <hr>
-                      <li><a class="nav-link ml-3 my-1" href="admin.userManage.html">고객계정 관리</a></li>
-                     <hr>
-                    </ul>
-                  </nav>
-                  <a class="nav-link" href="#item-1"><i class="far fa-question-circle"></i>고객센터</a>
-                  <nav class="nav nav-pills flex-column">
-                    <ul>
-                      <hr>
-                      <li><a class="nav-link ml-3 my-1" href="admin.reviewManage.html">리뷰관리</a></li>
-                      <li><a class="nav-link ml-3 my-1" href="admin.qnaManage.html">Q&A</a></li>
-                      <li><a class="nav-link ml-3 my-1" href="admin.noticeBoard.html">공지사항</a></li>
-                      <hr>
-                    </ul>
-                  </nav>
-                </nav>
-              </nav>
+	
+	<div class="container-fluid">
+      <div class="row">
 
 
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+  
+              <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                  <span>ADMIN</span>
+                  <a class="d-flex align-items-center text-muted" href="#">
+                    <span data-feather="plus-circle"></span>
+                  </a>
+                </h3>
+  
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                  <span><i class="fas fa-gifts"></i>상품관리</span>
+                  <a class="d-flex align-items-center text-muted" href="#">
+                    <span data-feather="plus-circle"></span>
+                  </a>
+                </h6>
+  
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  	상품등록 <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file"></span>
+                  	상품조회/수정
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="shopping-cart"></span>
+                  	재고관리
+                </a>
+              </li>
+              
+            </ul>
+    
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span><i class="fas fa-money-check-alt"></i>판매관리</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+  
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                 	 주문내역 조회
+                </a>
+              </li>
+            </ul>
+  
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span><i class="fas fa-users"></i>고객관리</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+  
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                 	 고객계정 관리
+                </a>
+              </li>
+            </ul>
+  
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span><i class="far fa-question-circle"></i>고객센터</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+  
+           <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <span data-feather="home"></span>
+              	리뷰관리 <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Q&A
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+             	 공지사항
+            </a>
+          </li>
+          
+        </ul>
           </div>
+        </nav>
 
           <!--vertical nav 끝-->
  
@@ -105,7 +158,7 @@
           
         <div class="col-9">
             <div class="container-fluid">
-            <h3 style="margin-top: 30px;margin-bottom: 80px;">상품등록</h3>
+            <h1 style="margin-top: 30px;margin-bottom: 80px; text-align: left;">상품등록</h1>
 
       
             <form class="needs-validated">
@@ -116,10 +169,10 @@
                         <div class="col" style="padding: 0; text-align: center;">
                             <div class="input-group is-invalid">
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text" for="validatedInputGroupSelect">카테고리</label>
+                                  <label class="input-group-text" for="category">카테고리</label>
                                 </div>
-                                <select class="custom-select" id="validatedInputGroupSelect" required>
-                                  <option value="">...</option>
+                                <select class="custom-select" name="category id="category" required>
+                                  <option>...</option>
                                   <option value="1">HANGING</option>
                                   <option value="2">PLANT</option>
                                  
@@ -130,12 +183,17 @@
                         <div class="col" style="margin-left: 10px;">
                             <div class="input-group is-invalid">
                                 <div class="input-group-prepend">
-                                  <label class="input-group-text" for="validatedInputGroupSelect">키워드</label>
+                                  <label class="input-group-text" for="keyword">키워드</label>
                                 </div>
-                                <select class="custom-select" id="validatedInputGroupSelect" required>
-                                  <option value="">...</option>
-                                  <option value="3">동물친화</option>
-                                  <option value="3">공기정화</option>
+                                <select class="custom-select" name="keyword" id="keyword" required>
+                                  <option>...</option>
+                                  <option value="1">동물친화</option>
+                                  <option value="2">공기정화</option>
+                                  <option value="3">동물친화+공기정화</option>
+                                  <option vlaue="4">신상품</option>
+                                  <option value="5">베스트</option>
+                                  <option value="6">동물친화+베스트</option>
+                                  <option value="7">공기정화+베스트</option>
                                 </select>
                               </div>
                         </div>
@@ -144,28 +202,28 @@
                 </div>
 
                 <div class="mb-3" style="margin-top: 40px;">
-                    <label for="pname">상품명</label>
-                    <input type="text" class="form-control is-invalid" id="pname" placeholder="상품명을 입력하세요." required style="display: inline;">
+                    <label for="itemName">상품명</label>
+                    <input type="text" class="form-control is-invalid" id="itemName" name="itemName" placeholder="상품명을 입력하세요." required style="display: inline;">
                     <div class="invalid-feedback">
-                      		한글로 3자 이상 입력하세요.
+                      	한글로 3자 이상 입력하세요.
                     </div>
                   </div>
 
                 <script>
                   $(function(){
-                    $("#pname").change(function(){
+                    $("#itemName").change(function(){
 
 
                       var regExp1=/^[가-힣]{3,}$/;
 
                       if(regExp1.test($(this).val())){
-                        $("#pname").addClass("is-valid");
-                        $("#pname").removeClass("is-invalid");
+                        $("#itemName").addClass("is-valid");
+                        $("#itemName").removeClass("is-invalid");
 
                         
                       }else{
-                        $("#pname").removeClass("is-valid");
-                        $("#pname").addClass("is-invalid");
+                        $("#itemName").removeClass("is-valid");
+                        $("#itemName").addClass("is-invalid");
                       }
                     })
 
@@ -179,8 +237,13 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">&#8361;</span>
                       </div>
-                    <input type="number" min="0" class="form-control is-invalid" id="price" placeholder="정가를 입력하세요." required>
-                    <div class="invalid-feedback">숫자를 입력하세요.</div>
+                    <input type="number" min="0" class="form-control is-invalid" id="price" name="price" placeholder="정가를 입력하세요." required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">원</span>
+                    </div> 
+                    <div class="invalid-feedback">
+                      	숫자를 입력하세요.
+                    </div>
                   </div>
                   </div>
 
@@ -212,21 +275,25 @@
                   </script>
 
                   <div class="mb-3" style="margin-top: 40px;">
-                  
                     <label for="discount">할인</label>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">&#8361;</span>
                       </div>
-                    	<input type="number" min="0" class="form-control is-invalid" id="discount" placeholder="할인가를 입력하세요." required>
-                    	<div class="invalid-feedback">정가보다 큰 금액은 입력할 수 없어요.</div>
-                    	
+                    <input type="number" min="0" class="form-control is-invalid" id="discount" name="discount" placeholder="할인가를 입력하세요." required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">원</span>
+                    </div> 
+                    <div class="invalid-feedback">
+                       	 정가보다 큰 금액은 입력할 수 없어요.
+                    </div>
                    </div>
-                   
                   </div>
 
 
                   <script>
+
+
 
                       $("#discount").keyup(function(){
 
@@ -260,16 +327,19 @@
   
                       });
 
+                  
                   </script>
 
                   <div class="mb-3" style="margin-top: 40px;">
                     <label for="stock">재고수량</label>
                     <div class="input-group mb-3">
-                    <input type="number" min="0" class="form-control is-invalid" id="stock" placeholder="재고 수량을 입력하세요." required>
+                    <input type="number" min="0" class="form-control is-invalid" id="stock" name="stock" placeholder="재고 수량을 입력하세요." required>
                     <div class="input-group-append">
                       <span class="input-group-text">개</span>
                     </div> 
-                    <div class="invalid-feedback"> 숫자를 입력하세요.</div>
+                    <div class="invalid-feedback">
+                      	숫자를 입력하세요.
+                    </div>
                     </div>
                     
                   </div>
@@ -299,11 +369,13 @@
                    <div class="mb-3" style="margin-top: 40px;">
                     <label for="stock">최대 구매 수량</label>
                     <div class="input-group mb-3">
-                    <input type="number" min="0" class="form-control is-invalid" id="maxBuy" placeholder="최대 구매 수량을 입력하세요." required>
+                    <input type="number" min="0" class="form-control is-invalid" id="maxBuy" name="maxBuy" placeholder="최대 구매 수량을 입력하세요." required>
                     <div class="input-group-append">
                       <span class="input-group-text">개</span>
                     </div> 
-                    <div class="invalid-feedback"> 숫자를 입력하세요.</div>
+                    <div class="invalid-feedback">
+                     	 숫자를 입력하세요.
+                    </div>
                     </div>
                   </div>
 
@@ -332,7 +404,7 @@
 
                 <div class="mb-3" style="margin-top: 40px;">
                   <label for="validationTextarea">상세설명</label>
-                  <textarea class="form-control" id="itemInfo" maxlength="1000" placeholder="제품에 대한 설명을 적으세요." required></textarea>
+                  <textarea class="form-control" id="itemInfo" name="itemInfo" maxlength="1000" placeholder="제품에 대한 설명을 적으세요." required></textarea>
                 </div>
                 <div id="countText"><span>0</span>/<span>1000</span></div>
                 <script>
@@ -357,26 +429,26 @@
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">상태</label>
                 <div class="input-group is-invalid">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="validatedInputGroupSelect">전시유무</label>
+                      <label class="input-group-text" for="display">전시유무</label>
                     </div>
-                    <select class="custom-select" id="exhibit" required>
-                      <option value="">...</option>
-                      <option value="available">전시중</option>
-                      <option value="inavailable">전시중지</option>
+                    <select class="custom-select" id="display" name="display" required>
+                      <option>...</option>
+                      <option value="Y">전시중</option>
+                      <option value="N">전시중지</option>
                     </select>
                   </div>
                   <div id="warning" style="display: none;">
-                   		 주의하세요! 전시중지를 할 경우, 상품이 노출되지 않아요.
+                    	주의하세요! 전시중지를 할 경우, 상품이 노출되지 않아요.
                 </div>
                 </div>
                 <script>
 
                   $(function(){
 
-                    $("#exhibit").change(function(){
+                    $("#display").change(function(){
 
 
-                      var selected=$("#exhibit").children("option:selected");
+                      var selected=$("#display").children("option:selected");
   
                       console.log(selected.text());
                       if(selected.text()=="전시중지"){
@@ -442,9 +514,10 @@
                 };
               </script>
                   
+                 <input type="hidden" id="mSource" name="mSource">
                  <div id="mdropbox"  name="mdropbox" style="width: 100%px; height: 80px; border: 1px solid #aaa;">
                   <span id="mdroplabel">
-                 		 이곳에 파일을 드랍해 주세요...
+                	  이곳에 파일을 드랍해 주세요...
                   </span>
                   </div>
                   <img id="mpreview" alt="[ 미리보기 ]" style="width: 500px;height: 500px; display: none;" />
@@ -493,6 +566,7 @@
                         document.getElementById("mpreview").style.display="block";
                         var img = document.getElementById("mpreview");
                         img.src = event.target.result;
+						$("#mSource").val(img.src);
                         
                         console.log(img.src);
                       }
@@ -558,10 +632,10 @@
 
                 };
               </script>
-
+				 <input type="hidden" id="sSource" name="sSource">
                  <div id="sdropbox"  name="sdropbox" style="width: 100%px; height: 80px; border: 1px solid #aaa;">
                   <span id="sdroplabel">
-                  		이곳에 파일을 드랍해 주세요...
+                  	이곳에 파일을 드랍해 주세요...
                   </span>
                   </div>
                   <img id="spreview" alt="[ 미리보기 ]" style="width: 500px;height: 500px; display: none;" />
@@ -610,6 +684,7 @@
                         document.getElementById("spreview").style.display="block";
                         var img = document.getElementById("spreview");
                         img.src = event.target.result;
+						$("#sSource").val(img.src);
                       }
 
                       var sdropbox = document.getElementById("sdropbox")
@@ -637,19 +712,26 @@
             
         
             
-            
+          
             
 
+
+
+        </div>
             
+         
             
-            </div>
-            
-       </div>
-      </div>
+       
+      
+
+        </div>
 
 
     </div>
-
+   	
+   
+   
+ 	<!--내용 끝  -->
     <div class="container-fluid" style="margin-top: 100px;">
       <div class="jumbotron text-center" style="background-image:url('<%=request.getContextPath() %>/images/admin/head.jpg'); height: 300px;">
         
