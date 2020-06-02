@@ -8,25 +8,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Cho-당신을 위한 반려식물</title>
-    <!--타이틀 아이콘-->
-    <link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
-
-    <!-- 아이콘 -->
-    <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
-
-    <style>
-        /* font start */
-        @font-face {
-            font-family: 'basicFont';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        * { font-family: "basicFont"; }
-        /* font end */
-    </style>
 
     <!-- header css -->
     <style>
