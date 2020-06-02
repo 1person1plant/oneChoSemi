@@ -1,4 +1,4 @@
--- ���̺� ����
+-- 테이블 삭제
 DROP TABLE ITEMIMAGE;
 DROP TABLE CARTLIST;
 DROP TABLE NOTICE;
@@ -14,9 +14,9 @@ DROP TABLE KEYWORD;
 DROP TABLE DELIVERY;
 DROP TABLE MEMBER;
 DROP TABLE RANK;
--- �� ���̺� ��� �Ϸ�
+-- 전 테이블 드롭 완료
 
--- ���̺� �߰�
+-- 테이블 추가
 --DROP TABLE member;
 
 CREATE TABLE member (
@@ -41,24 +41,24 @@ CREATE TABLE member (
 );
 alter table member add CONSTRAINT UQ_MEMBER_ID UNIQUE(member_id);
 
-COMMENT ON COLUMN member.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN member.member_admin IS '������:Y, �Ϲ�ȸ��:N';
-COMMENT ON COLUMN member.member_id IS '���̵�,����ũ';
-COMMENT ON COLUMN member.member_pwd IS '��й�ȣ';
-COMMENT ON COLUMN member.member_name IS '�̸�';
-COMMENT ON COLUMN member.member_phone1 IS '����ó1';
-COMMENT ON COLUMN member.member_phone2 IS '����ó2';
-COMMENT ON COLUMN member.member_phone3 IS '����ó3';
-COMMENT ON COLUMN member.member_email1 IS '�̸���1';
-COMMENT ON COLUMN member.member_email2 IS '�̸���2';
-COMMENT ON COLUMN member.member_postcode IS '������ȣ';
-COMMENT ON COLUMN member.member_address1 IS '�ּ�';
-COMMENT ON COLUMN member.member_address2 IS '���ּ�';
-COMMENT ON COLUMN member.member_joinDate IS 'ȸ�����Գ�¥';
-COMMENT ON COLUMN member.member_status IS 'Ż��:Y �⺻: N,ȸ������';
-COMMENT ON COLUMN member.member_exit IS 'Ż�����';
-COMMENT ON COLUMN member.member_point IS '����Ʈ';
-COMMENT ON COLUMN member.member_rank IS '��޹�ȣ(R1~R5)';
+COMMENT ON COLUMN member.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN member.member_admin IS '관리자:Y, 일반회원:N';
+COMMENT ON COLUMN member.member_id IS '아이디,유니크';
+COMMENT ON COLUMN member.member_pwd IS '비밀번호';
+COMMENT ON COLUMN member.member_name IS '이름';
+COMMENT ON COLUMN member.member_phone1 IS '연락처1';
+COMMENT ON COLUMN member.member_phone2 IS '연락처2';
+COMMENT ON COLUMN member.member_phone3 IS '연락처3';
+COMMENT ON COLUMN member.member_email1 IS '이메일1';
+COMMENT ON COLUMN member.member_email2 IS '이메일2';
+COMMENT ON COLUMN member.member_postcode IS '우편번호';
+COMMENT ON COLUMN member.member_address1 IS '주소';
+COMMENT ON COLUMN member.member_address2 IS '상세주소';
+COMMENT ON COLUMN member.member_joinDate IS '회원가입날짜';
+COMMENT ON COLUMN member.member_status IS '탈퇴:Y 기본: N,회원상태';
+COMMENT ON COLUMN member.member_exit IS '탈퇴사유';
+COMMENT ON COLUMN member.member_point IS '포인트';
+COMMENT ON COLUMN member.member_rank IS '등급번호(R1~R5)';
 
 --DROP TABLE rank;
 
@@ -71,12 +71,12 @@ CREATE TABLE rank (
 	rank_pointMax NUMBER
 );
 
-COMMENT ON COLUMN rank.rank_no IS '��޹�ȣ(R1~R5)';
-COMMENT ON COLUMN rank.rank_name IS '����̸�(����,����,����,����,����)';
-COMMENT ON COLUMN rank.rank_pointRat IS '���������(1%~5%)';
-COMMENT ON COLUMN rank.rank_pointCap IS '����Ʈ����ѵ�(2000~10000)';
-COMMENT ON COLUMN rank.rank_pointMin IS '��޾� �ּ� ���űݾ�';
-COMMENT ON COLUMN rank.rank_pointMax IS '��޾� �ִ� ���� �ݾ�';
+COMMENT ON COLUMN rank.rank_no IS '등급번호(R1~R5)';
+COMMENT ON COLUMN rank.rank_name IS '등급이름(씨앗,새싹,가지,열매,나무)';
+COMMENT ON COLUMN rank.rank_pointRat IS '등급적립율(1%~5%)';
+COMMENT ON COLUMN rank.rank_pointCap IS '포인트사용한도(2000~10000)';
+COMMENT ON COLUMN rank.rank_pointMin IS '등급업 최소 구매금액';
+COMMENT ON COLUMN rank.rank_pointMax IS '등급업 최대 구매 금액';
 
 --DROP TABLE review;
 
@@ -92,15 +92,15 @@ CREATE TABLE review (
 	image_no NVARCHAR2(14)
 );
 
-COMMENT ON COLUMN review.review_no IS '�����ȣ(R1~ )';
-COMMENT ON COLUMN review.order_no IS '�ֹ���ȣ(O1~ )';
-COMMENT ON COLUMN review.item_no IS '��ǰ��ȣ(I1~ )';
-COMMENT ON COLUMN review.member_no IS 'ȸ����ȣ';
-COMMENT ON COLUMN review.review_cDate IS '��������';
-COMMENT ON COLUMN review.review_rate IS '����';
-COMMENT ON COLUMN review.review_content IS '���䳻��';
-COMMENT ON COLUMN review.review_uDate IS '���������';
-COMMENT ON COLUMN review.image_no IS '�̹�����ȣ(img1~) ������';
+COMMENT ON COLUMN review.review_no IS '리뷰번호(R1~ )';
+COMMENT ON COLUMN review.order_no IS '주문번호(O1~ )';
+COMMENT ON COLUMN review.item_no IS '상품번호(I1~ )';
+COMMENT ON COLUMN review.member_no IS '회원번호';
+COMMENT ON COLUMN review.review_cDate IS '리뷰등록일';
+COMMENT ON COLUMN review.review_rate IS '평점';
+COMMENT ON COLUMN review.review_content IS '리뷰내용';
+COMMENT ON COLUMN review.review_uDate IS '리뷰수정일';
+COMMENT ON COLUMN review.image_no IS '이미지번호(img1~) 고객용';
 
 --DROP TABLE cartList;
 
@@ -111,10 +111,10 @@ CREATE TABLE cartList (
 	cartList_count NUMBER
 );
 
-COMMENT ON COLUMN cartList.cartList_no IS '��ٱ��Ϲ�ȣ(C1~)';
-COMMENT ON COLUMN cartList.item_no IS '��ǰ��ȣ';
-COMMENT ON COLUMN cartList.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN cartList.cartList_count IS '����';
+COMMENT ON COLUMN cartList.cartList_no IS '장바구니번호(C1~)';
+COMMENT ON COLUMN cartList.item_no IS '상품번호';
+COMMENT ON COLUMN cartList.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN cartList.cartList_count IS '수량';
 
 --DROP TABLE wishList;
 
@@ -125,10 +125,10 @@ CREATE TABLE wishList (
 	wishList_memo NVARCHAR2(500)
 );
 
-COMMENT ON COLUMN wishList.wishList_no IS '���ø���Ʈ��ȣ(W1~)';
-COMMENT ON COLUMN wishList.item_no IS '��ǰ��ȣ';
-COMMENT ON COLUMN wishList.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN wishList.wishList_memo IS '�޸�';
+COMMENT ON COLUMN wishList.wishList_no IS '위시리스트번호(W1~)';
+COMMENT ON COLUMN wishList.item_no IS '상품번호';
+COMMENT ON COLUMN wishList.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN wishList.wishList_memo IS '메모';
 
 --DROP TABLE orderList;
 
@@ -158,25 +158,25 @@ ALTER TABLE orderList ADD CONSTRAINT PK_ORDERLIST PRIMARY KEY (
 	item_no
 );
 
-COMMENT ON COLUMN orderList.order_no IS '�ֹ���ȣ(O1~ )';
-COMMENT ON COLUMN orderList.item_no IS '��ǰ��ȣ(I1~)';
-COMMENT ON COLUMN orderList.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN orderList.order_date IS '�ֹ��Ͻ�';
-COMMENT ON COLUMN orderList.order_count IS '�ֹ�����';
-COMMENT ON COLUMN orderList.order_usePoint IS '�������Ʈ';
-COMMENT ON COLUMN orderList.order_name IS '�������̸�';
-COMMENT ON COLUMN orderList.order_phone1 IS '��������ȭ��ȣ1';
-COMMENT ON COLUMN orderList.order_phone2 IS '��������ȭ��ȣ2';
-COMMENT ON COLUMN orderList.order_phone3 IS '��������ȭ��ȣ3';
-COMMENT ON COLUMN orderList.order_postcode IS '�����ڿ�����ȣ';
-COMMENT ON COLUMN orderList.order_address1 IS '�������ּ�';
-COMMENT ON COLUMN orderList.order_address2 IS '�����ڻ��ּ�';
-COMMENT ON COLUMN orderList.order_request IS '��۽ÿ�û����';
-COMMENT ON COLUMN orderList.order_dCost IS '��ۺ�';
-COMMENT ON COLUMN orderList.order_cancelRequest IS '�⺻: N , ��� : Y';
-COMMENT ON COLUMN orderList.order_cancelYN IS '�⺻: N , ���� : Y (�ֹ� ���� ȿ��)';
-COMMENT ON COLUMN orderList.delivery_code IS 'D1 : �����, D2 : �����, D3 : ��ۿϷ�';
-COMMENT ON COLUMN orderList.payment_code IS 'P1 : �Ա� ��, P2 : �Ա� ��';
+COMMENT ON COLUMN orderList.order_no IS '주문번호(O1~ )';
+COMMENT ON COLUMN orderList.item_no IS '상품번호(I1~)';
+COMMENT ON COLUMN orderList.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN orderList.order_date IS '주문일시';
+COMMENT ON COLUMN orderList.order_count IS '주문수량';
+COMMENT ON COLUMN orderList.order_usePoint IS '사용포인트';
+COMMENT ON COLUMN orderList.order_name IS '수령자이름';
+COMMENT ON COLUMN orderList.order_phone1 IS '수령자전화번호1';
+COMMENT ON COLUMN orderList.order_phone2 IS '수령자전화번호2';
+COMMENT ON COLUMN orderList.order_phone3 IS '수령자전화번호3';
+COMMENT ON COLUMN orderList.order_postcode IS '수령자우편번호';
+COMMENT ON COLUMN orderList.order_address1 IS '수령자주소';
+COMMENT ON COLUMN orderList.order_address2 IS '수령자상세주소';
+COMMENT ON COLUMN orderList.order_request IS '배송시요청사항';
+COMMENT ON COLUMN orderList.order_dCost IS '배송비';
+COMMENT ON COLUMN orderList.order_cancelRequest IS '기본: N , 취소 : Y';
+COMMENT ON COLUMN orderList.order_cancelYN IS '기본: N , 승인 : Y (주문 삭제 효과)';
+COMMENT ON COLUMN orderList.delivery_code IS 'D1 : 배송전, D2 : 배송중, D3 : 배송완료';
+COMMENT ON COLUMN orderList.payment_code IS 'P1 : 입금 전, P2 : 입금 후';
 
 --DROP TABLE qna;
 
@@ -193,16 +193,16 @@ CREATE TABLE qna (
 	image_no NVARCHAR2(14)
 );
 
-COMMENT ON COLUMN qna.qna_no IS '�۹�ȣ(Q1~)';
-COMMENT ON COLUMN qna.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN qna.qna_title IS '��������';
-COMMENT ON COLUMN qna.qna_cDate IS '�Խ���';
-COMMENT ON COLUMN qna.qna_content IS '����';
-COMMENT ON COLUMN qna.qna_answer IS '�亯';
-COMMENT ON COLUMN qna.qna_category IS '�з�';
-COMMENT ON COLUMN qna.qna_YN IS '�亯 �� : N, �亯 : Y';
-COMMENT ON COLUMN qna.image_no IS '�̹�����ȣ(img1~)';
-COMMENT ON COLUMN qna.qna_password IS '��й�ȣ';
+COMMENT ON COLUMN qna.qna_no IS '글번호(Q1~)';
+COMMENT ON COLUMN qna.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN qna.qna_title IS '질문제목';
+COMMENT ON COLUMN qna.qna_cDate IS '게시일';
+COMMENT ON COLUMN qna.qna_content IS '내용';
+COMMENT ON COLUMN qna.qna_answer IS '답변';
+COMMENT ON COLUMN qna.qna_category IS '분류';
+COMMENT ON COLUMN qna.qna_YN IS '답변 전 : N, 답변 : Y';
+COMMENT ON COLUMN qna.image_no IS '이미지번호(img1~)';
+COMMENT ON COLUMN qna.qna_password IS '비밀번호';
 
 --DROP TABLE notice;
 
@@ -215,12 +215,12 @@ CREATE TABLE notice (
 	image_no NVARCHAR2(14)
 );
 
-COMMENT ON COLUMN notice.notice_no IS '�����۹�ȣ(N1~)';
-COMMENT ON COLUMN notice.member_no IS 'ȸ����ȣ(M1~)';
-COMMENT ON COLUMN notice.notice_title IS '����';
-COMMENT ON COLUMN notice.notice_cDate IS '�Խ���';
-COMMENT ON COLUMN notice.notice_content IS '����';
-COMMENT ON COLUMN notice.image_no IS '�̹�����ȣ(img1~)';
+COMMENT ON COLUMN notice.notice_no IS '공지글번호(N1~)';
+COMMENT ON COLUMN notice.member_no IS '회원번호(M1~)';
+COMMENT ON COLUMN notice.notice_title IS '제목';
+COMMENT ON COLUMN notice.notice_cDate IS '게시일';
+COMMENT ON COLUMN notice.notice_content IS '내용';
+COMMENT ON COLUMN notice.image_no IS '이미지번호(img1~)';
 
 --DROP TABLE keyword;
 
@@ -229,8 +229,8 @@ CREATE TABLE keyword (
 	keyword_name NVARCHAR2(20)
 );
 
-COMMENT ON COLUMN keyword.keyword_no IS 'Ű�����ȣ(K1~)';
-COMMENT ON COLUMN keyword.keyword_name IS '�ߺ� ���� (new, best, ������ȭ, �ݷ����� ģȭ)';
+COMMENT ON COLUMN keyword.keyword_no IS '키워드번호(K1~)';
+COMMENT ON COLUMN keyword.keyword_name IS '중복 선택 (new, best, 공기정화, 반려동물 친화)';
 
 --DROP TABLE item;
 
@@ -251,20 +251,20 @@ CREATE TABLE item (
 	item_sale NVARCHAR2(2) DEFAULT 'Y' CONSTRAINT CK_item_sale CHECK(item_sale in('Y', 'N'))
 );
 
-COMMENT ON COLUMN item.item_no IS '��ǰ��ȣ(I1~)';
-COMMENT ON COLUMN item.item_name IS '��ǰ��';
-COMMENT ON COLUMN item.item_category IS '��ǰī�װ���';
-COMMENT ON COLUMN item.keyword_no IS 'Ű�����ȣ(K1~)';
-COMMENT ON COLUMN item.item_price IS '��ǰ����';
-COMMENT ON COLUMN item.item_discount IS '���ΰ�';
-COMMENT ON COLUMN item.item_rate IS '����';
-COMMENT ON COLUMN item.item_stock IS '��ǰ���';
-COMMENT ON COLUMN item.item_display IS '���� : Y, ������ : N';
-COMMENT ON COLUMN item.item_info IS '��ǰ�����ؽ�Ʈ';
-COMMENT ON COLUMN item.item_cDate IS '��ǰ�����';
-COMMENT ON COLUMN item.item_uDate IS '����������';
-COMMENT ON COLUMN item.item_max IS '�ִ뱸�ż���';
-COMMENT ON COLUMN item.item_sale IS '�Ǹ��� : Y, �Ǹ����� : N';
+COMMENT ON COLUMN item.item_no IS '상품번호(I1~)';
+COMMENT ON COLUMN item.item_name IS '상품명';
+COMMENT ON COLUMN item.item_category IS '상품카테고리';
+COMMENT ON COLUMN item.keyword_no IS '키워드번호(K1~)';
+COMMENT ON COLUMN item.item_price IS '상품가격';
+COMMENT ON COLUMN item.item_discount IS '할인값';
+COMMENT ON COLUMN item.item_rate IS '평점';
+COMMENT ON COLUMN item.item_stock IS '상품재고';
+COMMENT ON COLUMN item.item_display IS '전시 : Y, 비전시 : N';
+COMMENT ON COLUMN item.item_info IS '상품설명텍스트';
+COMMENT ON COLUMN item.item_cDate IS '상품등록일';
+COMMENT ON COLUMN item.item_uDate IS '최종수정일';
+COMMENT ON COLUMN item.item_max IS '최대구매수량';
+COMMENT ON COLUMN item.item_sale IS '판매중 : Y, 판매중지 : N';
 
 --DROP TABLE statistic;
 
@@ -283,18 +283,18 @@ CREATE TABLE statistic (
 	statistic_cDate DATE DEFAULT SYSDATE
 );
 
-COMMENT ON COLUMN statistic.statistic_no IS '�������(sta1-)';
-COMMENT ON COLUMN statistic.statistic_visitCount IS '�湮�ڼ�';
-COMMENT ON COLUMN statistic.statistic_toDayJoin IS '���ϰ���';
-COMMENT ON COLUMN statistic.statistic_cancelCount IS '��ҿ�û';
-COMMENT ON COLUMN statistic.statistic_member IS '��üȸ��';
-COMMENT ON COLUMN statistic.statistic_dAsk IS '��۹���';
-COMMENT ON COLUMN statistic.statistic_iAsk IS '��ǰ����';
-COMMENT ON COLUMN statistic.statistic_cAsk IS '��ҹ���';
-COMMENT ON COLUMN statistic.statistic_sales IS '���ϸ���';
-COMMENT ON COLUMN statistic.statistic_dBefore IS '��۴��';
-COMMENT ON COLUMN statistic.statistic_newOrder IS '�ű��ֹ�';
-COMMENT ON COLUMN statistic.statistic_cDate IS '�����';
+COMMENT ON COLUMN statistic.statistic_no IS '일일통계(sta1-)';
+COMMENT ON COLUMN statistic.statistic_visitCount IS '방문자수';
+COMMENT ON COLUMN statistic.statistic_toDayJoin IS '금일가입';
+COMMENT ON COLUMN statistic.statistic_cancelCount IS '취소요청';
+COMMENT ON COLUMN statistic.statistic_member IS '전체회원';
+COMMENT ON COLUMN statistic.statistic_dAsk IS '배송문의';
+COMMENT ON COLUMN statistic.statistic_iAsk IS '상품문의';
+COMMENT ON COLUMN statistic.statistic_cAsk IS '취소문의';
+COMMENT ON COLUMN statistic.statistic_sales IS '금일매출';
+COMMENT ON COLUMN statistic.statistic_dBefore IS '배송대기';
+COMMENT ON COLUMN statistic.statistic_newOrder IS '신규주문';
+COMMENT ON COLUMN statistic.statistic_cDate IS '등록일';
 
 --DROP TABLE delivery;
 
@@ -303,8 +303,8 @@ CREATE TABLE delivery (
 	delivery_status	NVARCHAR2(100)
 );
 
-COMMENT ON COLUMN delivery.delivery_code IS 'D1 : �����, D2 : �����, D3 : ��ۿϷ�(����ڵ�)';
-COMMENT ON COLUMN delivery.delivery_status IS '�����, �����, ��ۿϷ�(��ۻ���)';
+COMMENT ON COLUMN delivery.delivery_code IS 'D1 : 배송전, D2 : 배송중, D3 : 배송완료(배송코드)';
+COMMENT ON COLUMN delivery.delivery_status IS '배송전, 배송중, 배송완료(배송상태)';
 
 --DROP TABLE payment;
 
@@ -313,8 +313,8 @@ CREATE TABLE payment (
 	payment_status NVARCHAR2(100)
 );
 
-COMMENT ON COLUMN payment.payment_code IS 'P1 : �Ա� ��, P2 : �Ա� ��(�Ա��ڵ�)';
-COMMENT ON COLUMN payment.payment_status IS '�Ա� ��, �Ա� ��(�Աݻ���)';
+COMMENT ON COLUMN payment.payment_code IS 'P1 : 입금 전, P2 : 입금 후(입금코드)';
+COMMENT ON COLUMN payment.payment_status IS '입금 전, 입금 후(입금상태)';
 
 --DROP TABLE image;
 
@@ -324,9 +324,9 @@ CREATE TABLE image (
 	image_name NVARCHAR2(2000)
 );
 
-COMMENT ON COLUMN image.image_no IS '�̹�����ȣ(img1~)';
-COMMENT ON COLUMN image.image_path IS '�̹��� ���';
-COMMENT ON COLUMN image.image_name IS '�̹��� ��Ī';
+COMMENT ON COLUMN image.image_no IS '이미지번호(img1~)';
+COMMENT ON COLUMN image.image_path IS '이미지 경로';
+COMMENT ON COLUMN image.image_name IS '이미지 명칭';
 
 --DROP TABLE itemImage;
 
@@ -340,9 +340,9 @@ ALTER TABLE itemImage ADD CONSTRAINT PK_ITEMIMAGE PRIMARY KEY (
 	item_no
 );
 
-COMMENT ON COLUMN itemImage.itmeImage_no IS '��ǰ�̹��� ��ȣ(Ii1~)';
-COMMENT ON COLUMN itemImage.item_no IS '��ǰ��ȣ(I1~)';
-COMMENT ON COLUMN itemImage.image_no IS '�̹�����ȣ(img1~)';
+COMMENT ON COLUMN itemImage.itmeImage_no IS '상품이미지 번호(Ii1~)';
+COMMENT ON COLUMN itemImage.item_no IS '상품번호(I1~)';
+COMMENT ON COLUMN itemImage.image_no IS '이미지번호(img1~)';
 
 
 ALTER TABLE member ADD CONSTRAINT FK_rank_TO_member FOREIGN KEY ( member_rank )
@@ -402,47 +402,47 @@ REFERENCES item ( item_no );
 ALTER TABLE itemImage ADD CONSTRAINT FK_image_TO_itemImage FOREIGN KEY ( image_no )
 REFERENCES image ( image_no );
 
--- data �߰�
+-- data 추가
 
 REM INSERTING into ONECHO.RANK
 SET DEFINE OFF;
-Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R1','����',1,2000,0,50000);
-Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R2','����',2,4000,50001,200000);
-Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R3','����',3,6000,200001,500000);
-Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R4','����',4,8000,500001,1000000);
-Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R5','����',5,10000,1000001,999999999);
+Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R1','씨앗',1,2000,0,50000);
+Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R2','새싹',2,4000,50001,200000);
+Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R3','가지',3,6000,200001,500000);
+Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R4','열매',4,8000,500001,1000000);
+Insert into ONECHO.RANK (RANK_NO,RANK_NAME,RANK_POINTRAT,RANK_POINTCAP,RANK_POINTMIN,RANK_POINTMAX) values ('R5','나무',5,10000,1000001,999999999);
 
 REM INSERTING into ONECHO.MEMBER
 SET DEFINE OFF;
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M1','Y','admin1','admin1','������','010','1234','5678','admin1','@oncho.com','12345','2','2',to_date('20/06/02','RR/MM/DD'),'N',null,2000,'R2');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M2','Y','admin2','admin2','������','010','1234','5678','admin2','@oncho.com','12345','2','2',to_date('20/06/02','RR/MM/DD'),'N',null,4000,'R2');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M3','Y','admin3','admin3','�̾ƶ�','010','1234','5678','admin3','@oncho.com','12345','3','3',to_date('20/06/02','RR/MM/DD'),'N',null,8000,'R3');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M4','Y','admin4','admin4','��泲','010','1234','5678','admin4','@oncho.com','12345','4','4',to_date('20/06/02','RR/MM/DD'),'N',null,12000,'R4');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M5','Y','admin5','admin5','�̼���','010','1234','5678','admin5','@oncho.com','12345','5','5',to_date('20/06/02','RR/MM/DD'),'N',null,16000,'R5');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M6','N','user1','user1','ȫ�浿','010','2828','8282','user1','@naver.com','06234','����Ư���� ������ �������14�� 6 (���ﵿ)','2��',to_date('20/06/02','RR/MM/DD'),'N',null,2000,'R1');
-Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M7','N','user2','user2','ȫ�泲','010','7568','5678','user2','@gmail.com','06234','����Ư���� ������ �������14�� 6 (���ﵿ)','3��',to_date('20/06/03','RR/MM/DD'),'N',null,9000,'R2');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M1','Y','admin1','admin1','정유진','010','1234','5678','admin1','@oncho.com','12345','2','2',to_date('20/06/02','RR/MM/DD'),'N',null,2000,'R2');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M2','Y','admin2','admin2','강광산','010','1234','5678','admin2','@oncho.com','12345','2','2',to_date('20/06/02','RR/MM/DD'),'N',null,4000,'R2');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M3','Y','admin3','admin3','이아라','010','1234','5678','admin3','@oncho.com','12345','3','3',to_date('20/06/02','RR/MM/DD'),'N',null,8000,'R3');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M4','Y','admin4','admin4','김경남','010','1234','5678','admin4','@oncho.com','12345','4','4',to_date('20/06/02','RR/MM/DD'),'N',null,12000,'R4');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M5','Y','admin5','admin5','이수한','010','1234','5678','admin5','@oncho.com','12345','5','5',to_date('20/06/02','RR/MM/DD'),'N',null,16000,'R5');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M6','N','user1','user1','홍길동','010','2828','8282','user1','@naver.com','06234','서울특별시 강남구 테헤란로14길 6 (역삼동)','2층',to_date('20/06/02','RR/MM/DD'),'N',null,2000,'R1');
+Insert into ONECHO.MEMBER (MEMBER_NO,MEMBER_ADMIN,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_PHONE1,MEMBER_PHONE2,MEMBER_PHONE3,MEMBER_EMAIL1,MEMBER_EMAIL2,MEMBER_POSTCODE,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_JOINDATE,MEMBER_STATUS,MEMBER_EXIT,MEMBER_POINT,MEMBER_RANK) values ('M7','N','user2','user2','홍길남','010','7568','5678','user2','@gmail.com','06234','서울특별시 강남구 테헤란로14길 6 (역삼동)','3층',to_date('20/06/03','RR/MM/DD'),'N',null,9000,'R2');
 
 REM INSERTING into ONECHO.KEYWORD
 SET DEFINE OFF;
 Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K1','NEW');
 Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K2','BEST');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K3','������ȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K4','�ݷ����� ģȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K5','NEW,������ȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K6','NEW,�ݷ����� ģȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K7','NEW,������ȭ,�ݷ����� ģȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K8','BEST,������ȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K9','BEST,�ݷ����� ģȭ');
-Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K10','BEST,������ȭ,�ݷ����� ģȭ');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K3','공기정화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K4','반려동물 친화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K5','NEW,공기정화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K6','NEW,반려동물 친화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K7','NEW,공기정화,반려동물 친화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K8','BEST,공기정화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K9','BEST,반려동물 친화');
+Insert into ONECHO.KEYWORD (KEYWORD_NO,KEYWORD_NAME) values ('K10','BEST,공기정화,반려동물 친화');
 
 REM INSERTING into ONECHO.ITEM
 SET DEFINE OFF;
-Insert into ONECHO.ITEM (ITEM_NO,ITEM_NAME,ITEM_CATEGORY,KEYWORD_NO,ITEM_PRICE,ITEM_DISCOUNT,ITEM_RATE,ITEM_STOCK,ITEM_DISPLAY,ITEM_INFO,ITEM_CDATE,ITEM_UDATE,ITEM_MAX,ITEM_SALE) values ('I1','��������','PLANT','K3',30000,3000,4.3,999,'N','�׽�Ʈ ����',to_date('20/06/02','RR/MM/DD'),to_date('20/06/02','RR/MM/DD'),3,'Y');
-Insert into ONECHO.ITEM (ITEM_NO,ITEM_NAME,ITEM_CATEGORY,KEYWORD_NO,ITEM_PRICE,ITEM_DISCOUNT,ITEM_RATE,ITEM_STOCK,ITEM_DISPLAY,ITEM_INFO,ITEM_CDATE,ITEM_UDATE,ITEM_MAX,ITEM_SALE) values ('I2','TEST SAMPLE','PLANT','K9',29900,3000,4.9,999,'N','�׽�Ʈ ����',to_date('20/06/02','RR/MM/DD'),to_date('20/06/02','RR/MM/DD'),2,'Y');
+Insert into ONECHO.ITEM (ITEM_NO,ITEM_NAME,ITEM_CATEGORY,KEYWORD_NO,ITEM_PRICE,ITEM_DISCOUNT,ITEM_RATE,ITEM_STOCK,ITEM_DISPLAY,ITEM_INFO,ITEM_CDATE,ITEM_UDATE,ITEM_MAX,ITEM_SALE) values ('I1','고무나무','PLANT','K3',30000,3000,4.3,999,'N','테스트 내용',to_date('20/06/02','RR/MM/DD'),to_date('20/06/02','RR/MM/DD'),3,'Y');
+Insert into ONECHO.ITEM (ITEM_NO,ITEM_NAME,ITEM_CATEGORY,KEYWORD_NO,ITEM_PRICE,ITEM_DISCOUNT,ITEM_RATE,ITEM_STOCK,ITEM_DISPLAY,ITEM_INFO,ITEM_CDATE,ITEM_UDATE,ITEM_MAX,ITEM_SALE) values ('I2','TEST SAMPLE','PLANT','K9',29900,3000,4.9,999,'N','테스트 내용',to_date('20/06/02','RR/MM/DD'),to_date('20/06/02','RR/MM/DD'),2,'Y');
 
 REM INSERTING into ONECHO.IMAGE
 SET DEFINE OFF;
-Insert into ONECHO.IMAGE (IMAGE_NO,IMAGE_PATH,IMAGE_NAME) values ('IMG1','/IMAGES/ITEM/','��������.jpg');
+Insert into ONECHO.IMAGE (IMAGE_NO,IMAGE_PATH,IMAGE_NAME) values ('IMG1','/IMAGES/ITEM/','고무나무.jpg');
 Insert into ONECHO.IMAGE (IMAGE_NO,IMAGE_PATH,IMAGE_NAME) values ('IMG2','/IMAGES/ITEM/','smim.jpg');
 Insert into ONECHO.IMAGE (IMAGE_NO,IMAGE_PATH,IMAGE_NAME) values ('IMG3','/IMAGES/ITEM/','testsample.jpg');
 
@@ -462,19 +462,19 @@ Insert into ONECHO.CARTLIST (CARTLIST_NO,ITEM_NO,MEMBER_NO,CARTLIST_COUNT) value
 
 REM INSERTING into ONECHO.WISHLIST
 SET DEFINE OFF;
-Insert into ONECHO.WISHLIST (WISHLIST_NO,ITEM_NO,MEMBER_NO,WISHLIST_MEMO) values ('W1','I1','M7','��!!');
-Insert into ONECHO.WISHLIST (WISHLIST_NO,ITEM_NO,MEMBER_NO,WISHLIST_MEMO) values ('W2','I2','M6','ģ������');
+Insert into ONECHO.WISHLIST (WISHLIST_NO,ITEM_NO,MEMBER_NO,WISHLIST_MEMO) values ('W1','I1','M7','찜!!');
+Insert into ONECHO.WISHLIST (WISHLIST_NO,ITEM_NO,MEMBER_NO,WISHLIST_MEMO) values ('W2','I2','M6','친구선물');
 
 REM INSERTING into ONECHO.DELIVERY
 SET DEFINE OFF;
-Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D1','��� ��');
-Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D2','��� ��');
-Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D3','��� �Ϸ�');
+Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D1','배송 전');
+Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D2','배송 중');
+Insert into ONECHO.DELIVERY (DELIVERY_CODE,DELIVERY_STATUS) values ('D3','배송 완료');
 
 REM INSERTING into ONECHO.PAYMENT
 SET DEFINE OFF;
-Insert into ONECHO.PAYMENT (PAYMENT_CODE,PAYMENT_STATUS) values ('P1','�Ա� ��');
-Insert into ONECHO.PAYMENT (PAYMENT_CODE,PAYMENT_STATUS) values ('P2','�Ա� ��');
+Insert into ONECHO.PAYMENT (PAYMENT_CODE,PAYMENT_STATUS) values ('P1','입금 전');
+Insert into ONECHO.PAYMENT (PAYMENT_CODE,PAYMENT_STATUS) values ('P2','입금 후');
 
 REM INSERTING into ONECHO.STATISTIC
 SET DEFINE OFF;
@@ -483,17 +483,17 @@ Insert into ONECHO.STATISTIC (STATISTIC_NO,STATISTIC_VISITCOUNT,STATISTIC_TODAYJ
 
 REM INSERTING into ONECHO.ORDERLIST
 SET DEFINE OFF;
-Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O1','I1','M6',to_date('20/06/02','RR/MM/DD'),3,0,'ȫ�浿','010','1234','1234','98762','����� ���ı� ������ ��������Ʈ','110�� 101ȣ',null,2500,'N','N','D1','P1');
-Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O2','I1','M7',to_date('20/06/02','RR/MM/DD'),3,0,'ȫ�浿','010','1234','1234','98762','����� ���ı� ������ ��������Ʈ','110�� 101ȣ',null,2500,'N','N','D1','P1');
-Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O3','I1','M6',to_date('20/06/02','RR/MM/DD'),1,0,'ȫ�浿','010','1234','1234','98762','����� ���ı� ������ ��������Ʈ','110�� 101ȣ',null,2500,'N','N','D1','P1');
-Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O3','I2','M6',to_date('20/06/02','RR/MM/DD'),1,0,'ȫ�浿','010','1234','1234','98762','����� ���ı� ������ ��������Ʈ','110�� 101ȣ',null,2500,'N','N','D1','P1');
+Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O1','I1','M6',to_date('20/06/02','RR/MM/DD'),3,0,'홍길동','010','1234','1234','98762','서울시 송파구 가락동 가락아파트','110동 101호',null,2500,'N','N','D1','P1');
+Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O2','I1','M7',to_date('20/06/02','RR/MM/DD'),3,0,'홍길동','010','1234','1234','98762','서울시 송파구 가락동 가락아파트','110동 101호',null,2500,'N','N','D1','P1');
+Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O3','I1','M6',to_date('20/06/02','RR/MM/DD'),1,0,'홍길동','010','1234','1234','98762','서울시 송파구 가락동 가락아파트','110동 101호',null,2500,'N','N','D1','P1');
+Insert into ONECHO.ORDERLIST (ORDER_NO,ITEM_NO,MEMBER_NO,ORDER_DATE,ORDER_COUNT,ORDER_USEPOINT,ORDER_NAME,ORDER_PHONE1,ORDER_PHONE2,ORDER_PHONE3,ORDER_POSTCODE,ORDER_ADDRESS1,ORDER_ADDRESS2,ORDER_REQUEST,ORDER_DCOST,ORDER_CANCELREQUEST,ORDER_CANCELYN,DELIVERY_CODE,PAYMENT_CODE) values ('O3','I2','M6',to_date('20/06/02','RR/MM/DD'),1,0,'홍길동','010','1234','1234','98762','서울시 송파구 가락동 가락아파트','110동 101호',null,2500,'N','N','D1','P1');
 
 REM INSERTING into ONECHO.REVIEW
 SET DEFINE OFF;
-Insert into ONECHO.REVIEW (REVIEW_NO,ORDER_NO,ITEM_NO,MEMBER_NO,REVIEW_CDATE,REVIEW_RATE,REVIEW_CONTENT,REVIEW_UDATE,IMAGE_NO) values ('R1','O1','I1','M7',to_date('20/06/02','RR/MM/DD'),5,'���� �������ƿ�',to_date('20/06/02','RR/MM/DD'),'IMG3');
-Insert into ONECHO.REVIEW (REVIEW_NO,ORDER_NO,ITEM_NO,MEMBER_NO,REVIEW_CDATE,REVIEW_RATE,REVIEW_CONTENT,REVIEW_UDATE,IMAGE_NO) values ('R3','O3','I1','M6',to_date('20/06/02','RR/MM/DD'),5,'���Ⱑ �޶�� ^^',to_date('20/06/02','RR/MM/DD'),'IMG3');
+Insert into ONECHO.REVIEW (REVIEW_NO,ORDER_NO,ITEM_NO,MEMBER_NO,REVIEW_CDATE,REVIEW_RATE,REVIEW_CONTENT,REVIEW_UDATE,IMAGE_NO) values ('R1','O1','I1','M7',to_date('20/06/02','RR/MM/DD'),5,'좋아 아주좋아요',to_date('20/06/02','RR/MM/DD'),'IMG3');
+Insert into ONECHO.REVIEW (REVIEW_NO,ORDER_NO,ITEM_NO,MEMBER_NO,REVIEW_CDATE,REVIEW_RATE,REVIEW_CONTENT,REVIEW_UDATE,IMAGE_NO) values ('R3','O3','I1','M6',to_date('20/06/02','RR/MM/DD'),5,'공기가 달라요 ^^',to_date('20/06/02','RR/MM/DD'),'IMG3');
 
 REM INSERTING into ONECHO.QNA
 SET DEFINE OFF;
-Insert into ONECHO.QNA (QNA_NO,MEMBER_NO,QNA_TITLE,QNA_CDATE,QNA_CONTENT,QNA_ANSWER,QNA_CATEGORY,QNA_PASSWORD,QNA_YN,IMAGE_NO) values ('Q1','M6','ȭ�л� ���� �����Ѱ���?',to_date('20/06/02','RR/MM/DD'),'ȭ�л��� �ñ��ؿ�',null,'��ǰ','1234','N','IMG3');
+Insert into ONECHO.QNA (QNA_NO,MEMBER_NO,QNA_TITLE,QNA_CDATE,QNA_CONTENT,QNA_ANSWER,QNA_CATEGORY,QNA_PASSWORD,QNA_YN,IMAGE_NO) values ('Q1','M6','화분색 선택 가능한가요?',to_date('20/06/02','RR/MM/DD'),'화분색이 궁금해요',null,'상품','1234','N','IMG3');
 
