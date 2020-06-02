@@ -77,8 +77,8 @@
 
     </header>
     <section>
-        <!--carousel-->
-    <div class="container-fluid">
+    <!--carousel-->
+    <div class="container-fluid" style="padding: 0px">
         <div id="carouselECS" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselECS" data-slide-to="0" class="active"></li>

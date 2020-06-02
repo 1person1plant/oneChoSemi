@@ -199,7 +199,7 @@
                                 </tr>
                                 <tr>
                                     <td scope="row" colspan='3' class="mt-2"><button type='button' id='save'
-                                            class='button1'>변경저장</button>&nbsp;&nbsp;<button type='button'
+                                            class='button1' onclick="saveBtn();">변경저장</button>&nbsp;&nbsp;<button type='button'
                                             class='button1'>취소</button></td>
                                 </tr>
 
@@ -357,6 +357,9 @@
             			"width":"auto", "height":"42px"});
             		});
             	});
+            </script>
+            <script>
+            	
             </script>
 	<%@ include file="../common/footer.jsp"%>
 </body>

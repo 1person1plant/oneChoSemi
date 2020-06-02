@@ -56,6 +56,7 @@ ul .list-group-item :hover {
 				<a href="inforEdit.jsp">
 					<li class="list-group-item">개인 정보 수정</li>
 				</a>
+				<%-- <a href="<%=request.getContextPath();%>/list.bo"> --%>
 				<a href="orderHistory.jsp">
 					<li class="list-group-item">주문 내역 조회</li>
 				</a>

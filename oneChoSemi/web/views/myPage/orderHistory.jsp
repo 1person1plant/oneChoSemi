@@ -115,6 +115,9 @@
 					</div>
 				</fieldset>
 			</div>
+			<div class="table">
+				
+			</div>
 			<script>
             	$(function(){
             		$(".button1").mouseenter(function(){

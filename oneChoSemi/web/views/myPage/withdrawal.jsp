@@ -69,7 +69,7 @@ td {
 	/* Stay in place */
 	z-index: 1030;
 	/* Sit on top */
-	padding-top: 100px;
+	padding-top: 2%;
 	/* Location of the box */
 	left: 0;
 	top: 0;
