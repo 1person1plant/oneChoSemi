@@ -70,6 +70,11 @@
             margin-right: 5rem;
         }
         /* 상품 card end */
+        
+        .container-fluid{
+    		padding-left:0 !important;
+    		padding-right:0 !important;
+	        }
     </style>
 </head>
 <body>
