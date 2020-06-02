@@ -176,7 +176,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">마이페이지</a>
+              <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
             </li>
           </ul>
         </div>
@@ -268,6 +268,9 @@
 
         }
       }
+      function myPageBtn(){
+			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+		}
     </script>
 
 
