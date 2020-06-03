@@ -1,33 +1,46 @@
-<%@page import="member.model.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%
+	boolean result = false;
+	String adminChk = "";
+	
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	Member adminUser = (Member)session.getAttribute("adminUser");
+//	String admin2 = loginUser.getMemberAdmin();
+//	String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
+//	System.out.println("admin1 " + admin1);
+	adminChk = (String)session.getAttribute("admin");
+	if(loginUser == null){
+		System.out.println("admin " + adminChk);
+		System.out.println("result1 " + result);
+		result = true;
+	} else {
+		System.out.println("admin " + adminChk);
+		System.out.println("result2 " + result);
+		result = false;
+	}
+	System.out.println("result " + result);
+	
+//	if(session==null || !request.isRequestedSessionIdValid()){
+//		Member loginUser = (Member)session.getAttribute("loginUser");
+//		adminChk = (String)session.getAttribute("adminChk");
+//		System.out.println("admin " + adminChk);
+//		System.out.println("result1 " + result);
+//		result = true;
+//	} else {
+//		System.out.println("admin " + adminChk);
+//		System.out.println("result2 " + result);
+//		result = false;
+//	}
+//	System.out.println("result3 " + result);
 %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Cho-당신을 위한 반려식물</title>
-    <!--타이틀 아이콘-->
-    <link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
-
-    <!-- 아이콘 -->
-    <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
-
-    <style>
-        /* font start */
-        @font-face {
-            font-family: 'basicFont';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        * { font-family: "basicFont"; }
-        /* font end */
-    </style>
-
+    
+	<!-- 제이쿼리 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
     <!-- header css -->
     <style>
         /* 로고 이미지 start */
@@ -108,8 +121,130 @@
         }
         /* 탑 버튼 end */
     </style>
-</head>
 
+<!-- 로그인 테스트 셈플 폼 -->
+	<style>
+		/* Full-width input fields */
+		#loginSample input[type=text],
+		#loginSample input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		
+		/* Set a style for all buttons */
+		#loginSample button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+		
+		#loginSample button:hover {
+			opacity: 0.8;
+		}
+		
+		/* Extra styles for the cancel button */
+		#loginSample .loginSample_cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+		
+		/* Center the image and position the close button */
+		#loginSample .imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		
+		#loginSample img.avatar {
+			width: 40%;
+			border-radius: 50%;
+		}
+		
+		#loginSample .container {
+			padding: 16px;
+		}
+		
+		#loginSample span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+		
+		/* The Modal (background) */
+		#loginSample .modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1220; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			padding-top: 60px;
+		}
+		
+		/* Modal Content/Box */
+		#loginSample .modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			width: 80%; /* Could be more or less, depending on screen size */
+		}
+		
+		/* The Close Button (x) */
+		#loginSample .loginSample_close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+		
+		#loginSample .loginSample_close:hover,
+		#loginSample .loginSample_close:focus {
+			color: red;
+			cursor: pointer;
+		}
+		
+		/* Add Zoom Animation */
+		#loginSample .animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+		
+		@-webkit-keyframes animatezoom {
+			from {-webkit-transform: scale(0)} 
+			to {-webkit-transform: scale(1)}
+		}
+		  
+		@keyframes animatezoom {
+			from {transform: scale(0)} 
+			to {transform: scale(1)}
+		}
+		
+		/* Change styles for span and cancel button on extra small screens */
+		@media screen and (max-width: 300px) {
+			#loginSample span.psw {
+			   display: block;
+			   float: none;
+			}
+			#loginSample .loginSample_cancelbtn {
+			   width: 100%;
+			}
+		}
+	</style>
+</head>
 <body>
     <header>
         <!--탑 버튼-->
@@ -119,31 +254,63 @@
         <div id="mainlogo">
             <img src="<%=request.getContextPath() %>/images/logo.png" class="img-fluid" alt="Responsive image" style="width: 150px; height: 100px; margin-top: 40px;">
         </div>
-    <!--상단 navbar-->
-	<%if(loginUser == null){ %>
+    <!--상단 navbar -->
+    <div style="position: relative;">
+	<%if(result){ %>
 	<!-- 로그인 실패 -->
-        <div style="position: relative;">
-            <nav class="navbar navbar-expand navbar-light" id="navbar-top">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">로그인</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-	<%}else {%>
+		<nav class="navbar navbar-expand navbar-light" id="navbar-top">
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		        <ul class="navbar-nav ml-auto">
+		            <li class="nav-item">
+		                <a class="nav-link" onclick="document.getElementById('loginEx').style.display='block'">로그인</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+
+        <div id="loginSample"><!-- 로그인 샘플 시작 -->
+	        <div id="loginEx" class="modal">
+			  <form class="modal-content animate" action = "<%=request.getContextPath() %>/login.me" method="post" onsubmit="return validate();">
+			    <div class="imgcontainer">
+			      <span onclick="document.getElementById('loginEx').style.display='none'" class="loginSample_close" title="Close Modal">&times;</span>
+			      <img src="<%=request.getContextPath() %>/sample/img_avatar2.png" alt="Avatar" class="avatar">
+			    </div>
+			
+			    <div class="container">
+			      <label for="uname"><b>User Id</b></label>
+			      <input type="text" placeholder="Enter Username" id="userId" name="userId" required>
+			
+			      <label for="psw"><b>Password</b></label>
+			      <input type="password" placeholder="Enter Password" id="userPwd" name="userPwd" required>
+			        
+			      <button type="submit">Login</button>
+			      <label>
+			        <input type="checkbox" checked="checked" name="remember"> Remember me
+			      </label>
+			    </div>
+
+			    <div class="container" style="background-color:#f1f1f1">
+			      <button type="button" onclick="document.getElementById('loginEx').style.display='none'" class="loginSample_cancelbtn">Cancel</button>
+			      <span class="psw">Forgot <a href="#">password?</a></span>
+			    </div>
+			  </form>
+			</div>
+        </div><!-- 로그인 샘플 끝 -->
+	<%} else { %>
 	<!-- 로그인 성공 -->
-		<div style="position: relative;">
-		    <nav class="navbar navbar-expand navbar-light" id="navbar-top">
+		   <nav class="navbar navbar-expand navbar-light" id="navbar-top">
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		            <ul class="navbar-nav ml-auto">
+		            	<%if(adminChk.equals("Y")){ %>
+						<li class="nav-item">
+		                    <a class="nav-link" href="#">관리자 페이지</a>
+		                </li>
+		                <%} %>
 		                <li class="nav-item">
-		                    <a class="nav-link" href="#">로그인</a>
+		                    <a class="nav-link" onclick="logout();">로그 아웃</a>
 		                </li>
 		                <li class="nav-item">
 		                    <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
@@ -151,8 +318,8 @@
 		            </ul>
 		        </div>
 		    </nav>
+	<%} %>
 		</div>
-    <%} %>   
     </header>
     
     <!-- sticky-top은 header안에서 작동안함 -->
@@ -232,12 +399,40 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+        
+        function logIn(){
+			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+		}
         function myPageBtn(){
 			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
 		}
         function goCart(){
-			location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
+        	if(result){
+        		alert("!!");
+				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
+        	} else {
+        		document.getElementById('loginEx').style.display='block';
+        		alert("!");
+        	}
 		}
+        
+		function validate(){ // 로그인
+			if($.trim($("#userId").val()) == ""){ // 아이디는 공백 제거 후 입력 확인
+ 				alert("아이디를 입력하세요");
+				$("#userId").focus();
+				return false;
+ 			} else if($("#userPwd").val() == "") { // 비밀번호는 입력만 확인
+ 				alert("비밀번호를 입력하세요");
+				$("#userPwd").focus();
+ 				return false;
+ 			} else {
+				return true;
+ 			}
+		}
+		function logout() {
+			location.href="<%=request.getContextPath()%>/logout.me";
+		}
+        
     </script>
 
 </body>

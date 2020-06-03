@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Cho-당신을 위한 반려식물</title>
     <!--타이틀 아이콘-->
-    <link rel="shortcut icon" type="image⁄x-icon" href="images/logo.png">
+    <link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
 
     <!-- 아이콘 -->
     <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
@@ -87,21 +87,21 @@
             </ol>
             <div class="maincarousel-inner carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/test3.jpg" class="d-block w-100" alt="...">
+                    <img src="<%=request.getContextPath() %>/images/test3.jpg" class="d-block w-100" alt="...">
                     <div class="maincarousel-caption carousel-caption">
                         <h5>조용한 위로</h5>
                         <p>삭막한 회색 도시에서 초록을 찾는 당신에게,</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/test1.jpg" class="d-block w-100" alt="...">
+                    <img src="<%=request.getContextPath() %>/images/test1.jpg" class="d-block w-100" alt="...">
                     <div class="maincarousel-caption carousel-caption">
                         <h5 style="color: white; text-align: right;">곁에서 함께 햇빛을 쬐며</h5>
                         <p style="color: white; text-align: right;"> 반려식물과 함께 시간을 보내는 주말</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/test2.jpg" class="d-block w-100" alt="...">
+                    <img src="<%=request.getContextPath() %>/images/test2.jpg" class="d-block w-100" alt="...">
                     <div class="maincarousel-caption carousel-caption">
                         <h5>묵묵히 당신을 기다리는 좋은 친구</h5>
                         <p>나의 생애 동안 함께 해주세요.</p>
@@ -124,7 +124,7 @@
             <div class="item-row row">
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -192,7 +192,7 @@
                 <p class="lead">하나의 화분이 당신의 시간을 바꾸어 나갈 것을 믿는 우리, CHO</p>
                 <hr class="my-4">
                 <p>반려식물에 대해 궁금하신 것이 있으신가요?</p>
-                <a class="btn btn-outline-info btn-lg" href="aboutUs.html" role="button" style="margin-top: 40px;">Learn
+                <a class="btn btn-outline-info btn-lg" href="<%=request.getContextPath() %>/views/aboutus/aboutUs.jsp" role="button" style="margin-top: 40px;">Learn
                     more</a>
             </div>
         </div>
@@ -203,7 +203,7 @@
             <div class="item-row row">
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -213,7 +213,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                        <img src="<%=request.getContextPath() %>/images/고무나무.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title">고무나무</p>
                             <p class="card-text">48,000원</p>
@@ -246,24 +246,14 @@
     
         <!--about us로 이동하는 광고-->
         <div class="container-fluid" style="margin-top: 100px;">
-            <div class="jumbotron text-center" style="background-image:'images/test4.jpg';">
+            <div class="jumbotron text-center" style="background-image:'<%=request.getContextPath() %>/images/test4.jpg';">
                 <h1 class="display-4">일분일초</h1>
                 <p class="lead">하나의 화분이 당신의 시간을 바꾸어 나갈 것을 믿는 우리, CHO</p>
                 <hr class="my-4">
                 <p>반려식물에 대해 궁금하신 것이 있으신가요?</p>
-                <a class="btn btn-outline-info btn-lg" href="#" role="button" style="margin-top: 40px;">Learn more</a>
+                <a class="btn btn-outline-info btn-lg" href="<%=request.getContextPath() %>/views/aboutus/aboutUs.jsp" role="button" style="margin-top: 40px;">Learn more</a>
             </div>
         </div>
     </section>
-   
-
-<!-- 토스트와 캐서셀 실행하려면 아래 있어야함... -->
-
 </body>
-
-
-
-
-
-
 </html>
