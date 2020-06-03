@@ -5,35 +5,15 @@
 	String adminChk = "";
 	if(session!=null || !request.isRequestedSessionIdValid()){
 		loginUser = (Member)session.getAttribute("loginUser");
-		adminChk = (String)session.getAttribute("admin");
-//		String admin2 = loginUser.getMemberAdmin();
-//		String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
-//		System.out.println("admin1 " + admin1);
+//		adminChk = (String)session.getAttribute("admin");
 		if(loginUser == null){
-			System.out.println("admin " + adminChk);
-			System.out.println("result1 " + result);
 			result = true;
 		} else {
-			System.out.println("admin " + adminChk);
-			System.out.println("result2 " + result);
+			adminChk = loginUser.getMemberAdmin();
 			result = false;
 		}
 		System.out.println("result " + result);
 	}
-	
-	// 테스트 중
-//	if(session==null || !request.isRequestedSessionIdValid()){
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		adminChk = (String)session.getAttribute("adminChk");
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result1 " + result);
-//		result = true;
-//	} else {
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result2 " + result);
-//		result = false;
-//	}
-//	System.out.println("result3 " + result);
 %>
 <!DOCTYPE html>
 <html lang="ko">
