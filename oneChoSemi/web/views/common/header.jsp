@@ -2,24 +2,45 @@
 <%
 	boolean result = false;
 	String adminChk = "";
-	if(session==null || !request.isRequestedSessionIdValid()){
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		adminChk = (String)session.getAttribute("adminChk");
+	
+	Member loginUser = (Member)session.getAttribute("loginUser");
+//	String admin2 = loginUser.getMemberAdmin();
+//	String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
+//	System.out.println("admin1 " + admin1);
+	adminChk = (String)session.getAttribute("admin");
+	if(loginUser == null){
+		System.out.println("admin " + adminChk);
+		System.out.println("result1 " + result);
 		result = true;
-	System.out.println("admin " + adminChk);
-	System.out.println("result1 " + result);
 	} else {
+		System.out.println("admin " + adminChk);
+		System.out.println("result2 " + result);
 		result = false;
-	System.out.println("result2 " + result);
 	}
+	System.out.println("result " + result);
+	
+//	if(session==null || !request.isRequestedSessionIdValid()){
+//		Member loginUser = (Member)session.getAttribute("loginUser");
+//		adminChk = (String)session.getAttribute("adminChk");
+//		System.out.println("admin " + adminChk);
+//		System.out.println("result1 " + result);
+//		result = true;
+//	} else {
+//		System.out.println("admin " + adminChk);
+//		System.out.println("result2 " + result);
+//		result = false;
+//	}
+//	System.out.println("result3 " + result);
 %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Cho-당신을 위한 반려식물</title>
+    
 	<!-- 제이쿼리 -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
     <!-- header css -->
     <style>
         /* 로고 이미지 start */
@@ -102,127 +123,127 @@
     </style>
 
 <!-- 로그인 테스트 셈플 폼 -->
-<style>
-/* Full-width input fields */
-#loginSample input[type=text],
-#loginSample input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-#loginSample button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-#loginSample button:hover {
-  opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-#loginSample .loginSample_cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-#loginSample .imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-#loginSample img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-#loginSample .container {
-  padding: 16px;
-}
-
-#loginSample span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* The Modal (background) */
-#loginSample .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1220; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-#loginSample .modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-#loginSample .loginSample_close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-#loginSample .loginSample_close:hover,
-#loginSample .loginSample_close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-#loginSample .animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  #loginSample span.psw {
-     display: block;
-     float: none;
-  }
-  #loginSample .loginSample_cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+	<style>
+		/* Full-width input fields */
+		#loginSample input[type=text],
+		#loginSample input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		
+		/* Set a style for all buttons */
+		#loginSample button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+		
+		#loginSample button:hover {
+			opacity: 0.8;
+		}
+		
+		/* Extra styles for the cancel button */
+		#loginSample .loginSample_cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+		
+		/* Center the image and position the close button */
+		#loginSample .imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		
+		#loginSample img.avatar {
+			width: 40%;
+			border-radius: 50%;
+		}
+		
+		#loginSample .container {
+			padding: 16px;
+		}
+		
+		#loginSample span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+		
+		/* The Modal (background) */
+		#loginSample .modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1220; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			padding-top: 60px;
+		}
+		
+		/* Modal Content/Box */
+		#loginSample .modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			width: 80%; /* Could be more or less, depending on screen size */
+		}
+		
+		/* The Close Button (x) */
+		#loginSample .loginSample_close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+		
+		#loginSample .loginSample_close:hover,
+		#loginSample .loginSample_close:focus {
+			color: red;
+			cursor: pointer;
+		}
+		
+		/* Add Zoom Animation */
+		#loginSample .animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+		
+		@-webkit-keyframes animatezoom {
+			from {-webkit-transform: scale(0)} 
+			to {-webkit-transform: scale(1)}
+		}
+		  
+		@keyframes animatezoom {
+			from {transform: scale(0)} 
+			to {transform: scale(1)}
+		}
+		
+		/* Change styles for span and cancel button on extra small screens */
+		@media screen and (max-width: 300px) {
+			#loginSample span.psw {
+			   display: block;
+			   float: none;
+			}
+			#loginSample .loginSample_cancelbtn {
+			   width: 100%;
+			}
+		}
+	</style>
 </head>
 <body>
     <header>
@@ -386,10 +407,16 @@
 			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
 		}
         function goCart(){
-			location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
+        	if(result){
+        		alert("!!");
+				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
+        	} else {
+        		document.getElementById('loginEx').style.display='block';
+        		alert("!");
+        	}
 		}
         
-		function validate(){
+		function validate(){ // 로그인
 			if($.trim($("#userId").val()) == ""){ // 아이디는 공백 제거 후 입력 확인
  				alert("아이디를 입력하세요");
 				$("#userId").focus();
