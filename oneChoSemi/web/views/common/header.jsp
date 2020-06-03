@@ -1,23 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%
+	Member loginUser = null;
 	boolean result = false;
 	String adminChk = "";
-	
-	Member loginUser = (Member)session.getAttribute("loginUser");
-//	String admin2 = loginUser.getMemberAdmin();
-//	String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
-//	System.out.println("admin1 " + admin1);
-	adminChk = (String)session.getAttribute("admin");
-	if(loginUser == null){
-		System.out.println("admin " + adminChk);
-		System.out.println("result1 " + result);
-		result = true;
-	} else {
-		System.out.println("admin " + adminChk);
-		System.out.println("result2 " + result);
-		result = false;
+	if(session==null || !request.isRequestedSessionIdValid()){
+		loginUser = (Member)session.getAttribute("loginUser");
+//		String admin2 = loginUser.getMemberAdmin();
+//		String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
+//		System.out.println("admin1 " + admin1);
+		adminChk = (String)session.getAttribute("admin");
+		if(loginUser == null){
+			System.out.println("admin " + adminChk);
+			System.out.println("result1 " + result);
+			result = true;
+		} else {
+			System.out.println("admin " + adminChk);
+			System.out.println("result2 " + result);
+			result = false;
+		}
+		System.out.println("result " + result);
 	}
-	System.out.println("result " + result);
 	
 	// 테스트 중
 //	if(session==null || !request.isRequestedSessionIdValid()){
@@ -401,19 +403,25 @@
         }
         
         function logIn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+   			<%} %>
 		}
         function myPageBtn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+        		location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+	   		<%} %>
 		}
         function goCart(){	// 만드는 중...
-        	if(result){
-        		alert("!!");
-				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
-        	} else {
+        	<%if(result){%>
         		document.getElementById('loginEx').style.display='block';
-        		alert("!");
-        	}
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/cart.ca";
+       		<%} %>
 		}
         
 		function validate(){ // 로그인

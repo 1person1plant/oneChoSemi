@@ -11,7 +11,7 @@ public class Member implements Serializable{
 	private static final long serialVersionUID = 3566224316029271677L;
 	private String memberNo;		// 회원번호
 	private String memberAdmin;		// 관리자:Y, 일반회원:N
-	private String membeId;			// 아이디, 유니크
+	private String memberId;			// 아이디, 유니크
 	private String memberPwd;		// 비밀번호
 	private String memberName;		// 이름
 	private String memberPhone1;		// 연락처1
@@ -29,17 +29,17 @@ public class Member implements Serializable{
 	private String memberRank;		// 등급번호 (R1~R5)
 	public Member() {
 	}
-	public Member(String membeId, String memberPwd) {
-		this.membeId = membeId;
+	public Member(String memberId, String memberPwd) {
+		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 	}
-	public Member(String memberNo, String memberAdmin, String membeId, String memberPwd, String memberName,
+	public Member(String memberNo, String memberAdmin, String memberId, String memberPwd, String memberName,
 			String memberPhone1, String memberPhone2, String memberPhone3, String memberEmail1, String memberEmail2,
 			String memberPostcode, String memberAddress1, String memberAddress2, String memberStatus, int memberPoint,
 			String memberRank) {
 		this.memberNo = memberNo;
 		this.memberAdmin = memberAdmin;
-		this.membeId = membeId;
+		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
 		this.memberPhone1 = memberPhone1;
@@ -54,13 +54,13 @@ public class Member implements Serializable{
 		this.memberPoint = memberPoint;
 		this.memberRank = memberRank;
 	}
-	public Member(String memberNo, String memberAdmin, String membeId, String memberPwd, String memberName,
+	public Member(String memberNo, String memberAdmin, String memberId, String memberPwd, String memberName,
 			String memberPhone1, String memberPhone2, String memberPhone3, String memberEmail1, String memberEmail2,
 			String memberPostcode, String memberAddress1, String memberAddress2, Date memberJoinDate,
 			String memberStatus, String memberExit, int memberPoint, String memberRank) {
 		this.memberNo = memberNo;
 		this.memberAdmin = memberAdmin;
-		this.membeId = membeId;
+		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
 		this.memberPhone1 = memberPhone1;
@@ -89,11 +89,11 @@ public class Member implements Serializable{
 	public void setMemberAdmin(String memberAdmin) {
 		this.memberAdmin = memberAdmin;
 	}
-	public String getMembeId() {
-		return membeId;
+	public String getmemberId() {
+		return memberId;
 	}
-	public void setMembeId(String membeId) {
-		this.membeId = membeId;
+	public void setmemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getMemberPwd() {
 		return memberPwd;
@@ -187,7 +187,7 @@ public class Member implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Member [memberNo=" + memberNo + ", memberAdmin=" + memberAdmin + ", membeId=" + membeId + ", memberPwd="
+		return "Member [memberNo=" + memberNo + ", memberAdmin=" + memberAdmin + ", memberId=" + memberId + ", memberPwd="
 				+ memberPwd + ", memberName=" + memberName + ", memberPhone1=" + memberPhone1 + ", memberPhone2="
 				+ memberPhone2 + ", memberPhone3=" + memberPhone3 + ", memberEmail1=" + memberEmail1 + ", memberEmail2="
 				+ memberEmail2 + ", memberPostcode=" + memberPostcode + ", memberAddress1=" + memberAddress1
