@@ -5,10 +5,10 @@
 	String adminChk = "";
 	if(session!=null || !request.isRequestedSessionIdValid()){
 		loginUser = (Member)session.getAttribute("loginUser");
-//		adminChk = (String)session.getAttribute("admin");
 		if(loginUser == null){
 			result = true;
 		} else {
+//		adminChk = (String)session.getAttribute("admin");
 			adminChk = loginUser.getMemberAdmin();
 			result = false;
 		}
