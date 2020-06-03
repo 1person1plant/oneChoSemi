@@ -19,6 +19,7 @@
 	}
 	System.out.println("result " + result);
 	
+	// 테스트 중
 //	if(session==null || !request.isRequestedSessionIdValid()){
 //		Member loginUser = (Member)session.getAttribute("loginUser");
 //		adminChk = (String)session.getAttribute("adminChk");
@@ -262,10 +263,10 @@
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		            <li class="nav-item">
-		                <a class="nav-link" onclick="document.getElementById('loginEx').style.display='block'">로그인</a>
+		                <a class="nav-link" style="cursor: pointer" onclick="document.getElementById('loginEx').style.display='block'">로그인</a>
 		            </li>
 		            <li class="nav-item">
-		                <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
+		                <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
 		            </li>
 		        </ul>
 		    </div>
@@ -276,7 +277,6 @@
 			  <form class="modal-content animate" action = "<%=request.getContextPath() %>/login.me" method="post" onsubmit="return validate();">
 			    <div class="imgcontainer">
 			      <span onclick="document.getElementById('loginEx').style.display='none'" class="loginSample_close" title="Close Modal">&times;</span>
-			      <img src="<%=request.getContextPath() %>/sample/img_avatar2.png" alt="Avatar" class="avatar">
 			    </div>
 			
 			    <div class="container">
@@ -306,14 +306,14 @@
 		            <ul class="navbar-nav ml-auto">
 		            	<%if(adminChk.equals("Y")){ %>
 						<li class="nav-item">
-		                    <a class="nav-link" href="#">관리자 페이지</a>
+		                    <a class="nav-link" style="cursor: pointer" href="#">관리자 페이지</a>
 		                </li>
 		                <%} %>
 		                <li class="nav-item">
-		                    <a class="nav-link" onclick="logout();">로그 아웃</a>
+		                    <a class="nav-link" style="cursor: pointer" onclick="logout();">로그 아웃</a>
 		                </li>
 		                <li class="nav-item">
-		                    <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
+		                    <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
 		                </li>
 		            </ul>
 		        </div>
@@ -348,7 +348,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-3">
-                    <a class="nav-link" onclick="goCart();"><i class="fas fa-cart-plus"></i></a>
+                    <a class="nav-link" style="cursor: pointer" onclick="goCart();"><i class="fas fa-cart-plus"></i></a>
                 </li>
             </ul>
 
@@ -406,7 +406,7 @@
         function myPageBtn(){
 			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
 		}
-        function goCart(){
+        function goCart(){	// 만드는 중...
         	if(result){
         		alert("!!");
 				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
