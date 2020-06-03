@@ -16,23 +16,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		Member loginUser = null;
 
-		String query = "SELECT MEMBER_NO" + 
-							", MEMBER_ADMIN" +
-							", MEMBER_ID" + 
-							", MEMBER_PWD" + 
-							", MEMBER_NAME" + 
-							", MEMBER_PHONE1" + 
-							", MEMBER_PHONE2" + 
-							", MEMBER_PHONE3" + 
-							", MEMBER_EMAIL1" + 
-							", MEMBER_EMAIL2" + 
-							", MEMBER_POSTCODE" + 
-							", MEMBER_ADDRESS1" + 
-							", MEMBER_ADDRESS2" + 
-							", MEMBER_STATUS" + 
-							", MEMBER_POINT" + 
-							", MEMBER_RANK" + 
-						" FROM MEMBER WHERE MEMBER_ID=? AND MEMBER_PWD=? AND MEMBER_STATUS = 'N'";
+		String query = "SELECT * FROM MEMBER WHERE MEMBER_ID=? AND MEMBER_PWD=? AND MEMBER_STATUS = 'N'";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -55,12 +39,14 @@ public class MemberDao {
 									   rs.getString("MEMBER_POSTCODE"),
 									   rs.getString("MEMBER_ADDRESS1"),
 									   rs.getString("MEMBER_ADDRESS2"),
+									   rs.getDate("MEMBER_JOINDATE"),
 									   rs.getString("MEMBER_STATUS"),
+									   rs.getString("MEMBER_EXIT"),
 									   rs.getInt("MEMBER_POINT"),
 									   rs.getString("MEMBER_RANK")
 									   );
 			}
-//			System.out.println("MemberDao : " + loginUser);
+			System.out.println("MemberDao : " + loginUser);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

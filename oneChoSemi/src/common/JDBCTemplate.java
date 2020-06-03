@@ -17,7 +17,7 @@ public class JDBCTemplate {
 		
 		String fileName = JDBCTemplate.class.getResource("/sql/driver.properties").getPath();
 		
-//		System.out.println("Service단에서 Connection 객체 만들 때 : " +fileName);		
+//		System.out.println("Service단에서 Connection 객체 만들 때 : " +fileName);
 //		출력 예) Service단에서 Connection 객체 만들 때 : /C:/11_jspServlet/jspProject/web/WEB-INF/classes/sql/driver.properties
 
 		try {
