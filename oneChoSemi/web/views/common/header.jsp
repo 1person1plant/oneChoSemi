@@ -3,12 +3,12 @@
 	Member loginUser = null;
 	boolean result = false;
 	String adminChk = "";
-	if(session==null || !request.isRequestedSessionIdValid()){
+	if(session!=null || !request.isRequestedSessionIdValid()){
 		loginUser = (Member)session.getAttribute("loginUser");
+		adminChk = (String)session.getAttribute("admin");
 //		String admin2 = loginUser.getMemberAdmin();
 //		String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
 //		System.out.println("admin1 " + admin1);
-		adminChk = (String)session.getAttribute("admin");
 		if(loginUser == null){
 			System.out.println("admin " + adminChk);
 			System.out.println("result1 " + result);
