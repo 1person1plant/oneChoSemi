@@ -383,19 +383,25 @@
         }
         
         function logIn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+   			<%} %>
 		}
         function myPageBtn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+        		location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+	   		<%} %>
 		}
         function goCart(){	// 만드는 중...
-        	if(result){
-        		alert("!!");
-				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
-        	} else {
+        	<%if(result){%>
         		document.getElementById('loginEx').style.display='block';
-        		alert("!");
-        	}
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/cart.ca";
+       		<%} %>
 		}
         
 		function validate(){ // 로그인
