@@ -172,7 +172,6 @@
                             <th>글번호</th>
                             <th>제목</th>
                             <th>작성일</th>
-                            <th>조회수</th>
                             <th>수정/삭제</th>
                         </tr>
                         </tr>
@@ -183,7 +182,6 @@
                             <td>1</td>
                             <td>스투키가 입고!</td>
                             <td>2020-05-24</td>
-                            <td>0</td>
                             <td><button>수정</button><button>삭제</button></td>
                         </tr>
                        
@@ -193,7 +191,6 @@
                             <th>글번호</th>
                             <th>제목</th>
                             <th>작성일</th>
-                            <th>조회수</th>
                             <th>수정/삭제</th>
                         </tr>
                     </tfoot>
@@ -254,6 +251,7 @@
                                     <li><label>글번호</label><br><input type="text" readonly id="noticeId"></li>
                                     <li><label>제목</label><br><input type="text" readonly id="title" style="width: 100%;"></li>
                                     <li><label>내용</label><br><textarea id="content" readonly style="width: 100%;height: 100%;"></textarea></li>
+                                    <li><label>이미지</label><br><img src="<%=request.getContextPath() %>/images/admin/head.jpg" id="Nimage" style="width: 100%; height: 500px;display: none;"></li>
                                    
                                     
                                 </ul>    
@@ -342,13 +340,15 @@
            
             rows.click(function(){
                 
-                var count=$(this).children().eq(3).text();
-                count++;
-                $(this).children().eq(3).text(count);
+            	
                 
                 $("#noticeId").val($(this).children().eq(0).text());
                 $("#title").val($(this).children().eq(1).text());
                 $("#content").html(test);
+                
+                if($("#Nimage").attr("src")!=""){
+                    $("#Nimage").css("display","block");
+                }
                
                
                 

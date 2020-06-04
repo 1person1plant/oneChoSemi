@@ -41,6 +41,5 @@
 <%@ include file="views/common/main.jsp" %>
 <%@ include file="views/common/footer.jsp" %>
 
-
 </body>
 </html>
