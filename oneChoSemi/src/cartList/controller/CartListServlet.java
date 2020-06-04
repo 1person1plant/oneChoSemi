@@ -37,7 +37,7 @@ public class CartListServlet extends HttpServlet {
 		ArrayList<Cart> cartList = new CartService().cartList(userNo);
 		
 		System.out.println("CartListServlet cartList : " + cartList);
-		
+		System.out.println("cartList is empty? : " + cartList.isEmpty());
 		if(cartList != null) {
 			request.setAttribute("cartList", cartList);
 			request.getRequestDispatcher("views/cart/cart.jsp").forward(request, response);

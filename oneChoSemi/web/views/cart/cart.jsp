@@ -84,7 +84,7 @@
         padding: 10px 10px 10px 10px;
     }
     .carttable .emptyCart {
-        display: none;
+        /* display: none; */
         height: 300px;
     }
     .carttable thead td:nth-child(1) {
@@ -320,38 +320,7 @@
 	        		out.println("</tr>");
 	        	} %>
 	        <%} %>
-	        <%-- <tr class="cartitem2">
-	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
-	            <td>아이비 수경 재배 세트 2</td>
-	            <td><input class="cart_count" name="cart2" type="number" min="1" max="10" value="1" step="1"></td>
-	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
-	            <td><label for="trash2"><input type="button" id="trash2" class="trash"></input></label></td>
-	        </tr>
-	        <tr class="cartitem3">
-	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
-	            <td>아이비 수경 재배 세트 3</td>
-	            <td><input class="cart_count" name="cart3" type="number" min="1" max="10" value="1" step="1"></td>
-	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
-	            <td><label for="trash3"><input type="button" id="trash3" class="trash"></input></label></td>
-	        </tr>
-	        <tr class="cartitem4">
-	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
-	            <td>아이비 수경 재배 세트 4</td>
-	            <td><input class="cart_count" name="cart4" type="number" min="1" max="10" value="1" step="1"></td>
-	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
-	            <td><label for="trash4"><input type="button" id="trash4" class="trash"></input></label></td>
-	        </tr>
-	        <tr class="cartitem5">
-	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
-	            <td>아이비 수경 재배 세트 5</td>
-	            <td><input class="cart_count" name="cart5" type="number" min="1" max="10" value="1" step="1"></td>
-	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
-	            <td><label for="trash5"><input type="button" id="trash5" class="trash"></input></label></td>
-	        </tr> --%>
+	
 	        </tbody>
 	        <tfoot>
 	        <tr>
@@ -454,10 +423,10 @@
 	                }
 	            });
 	            // 상품이 없으면 상품 없음 행 보임
-	            function checkEmptyCart(){                    
-	                if($(".carttable > tbody tr").length == 1){
-	                    $(".emptyCart").css("display","table-cell");
-	                }
+//	            function checkEmptyCart(){                    
+//	                if($(".carttable > tbody tr").length == 1){
+//	                    $(".emptyCart").css("display","table-cell");
+//	                }
 	            }
 	        });
 	    </script>
