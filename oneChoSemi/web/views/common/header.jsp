@@ -3,12 +3,14 @@
 	Member loginUser = null;
 	boolean result = false;
 	String adminChk = "";
+	String userNo = "";
 	if(session!=null || !request.isRequestedSessionIdValid()){
 		loginUser = (Member)session.getAttribute("loginUser");
 		if(loginUser == null){
 			result = true;
 		} else {
-//		adminChk = (String)session.getAttribute("admin");
+			userNo = loginUser.getMemberNo();
+			System.out.println("userNo " + userNo);
 			adminChk = loginUser.getMemberAdmin();
 			result = false;
 		}
@@ -292,6 +294,7 @@
 		                </li>
 		                <%} %>
 		                <li class="nav-item">
+		                	<input type="hidden" id="userNo" value="<%=userNo %>"> <!-- 로그인유저 번호 저장 -->
 		                    <a class="nav-link" style="cursor: pointer" onclick="logout();">로그 아웃</a>
 		                </li>
 		                <li class="nav-item">
@@ -397,10 +400,11 @@
 	   		<%} %>
 		}
         function goCart(){	// 만드는 중...
+        	var userNo = $("#userNo").val();
         	<%if(result){%>
         		document.getElementById('loginEx').style.display='block';
 			<%} else {%>
-				location.href="<%=request.getContextPath()%>/cart.ca";
+				location.href="<%=request.getContextPath()%>/cart.ca?userNo=" + userNo;
        		<%} %>
 		}
         

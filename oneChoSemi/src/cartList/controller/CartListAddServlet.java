@@ -1,28 +1,23 @@
 package cartList.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cartList.model.service.CartService;
-import cartList.model.vo.Cart;
-
 /**
- * Servlet implementation class CartListServlet
+ * Servlet implementation class CartListAddServlet
  */
-@WebServlet("/cart.ca")
-public class CartListServlet extends HttpServlet {
+@WebServlet("/cartAdd.ca")
+public class CartListAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartListServlet() {
+    public CartListAddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +26,8 @@ public class CartListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userNo = request.getParameter("userNo");
-		System.out.println("CartListServlet : " + userNo);
-		
-		ArrayList<Cart> cartList = new CartService().cartList(userNo);
-		
-		System.out.println("CartListServlet cartList : " + cartList);
-		
-		if(cartList != null) {
-			request.setAttribute("cartList", cartList);
-			request.getRequestDispatcher("views/cart/cart.jsp").forward(request, response);
-		}else {
-			request.setAttribute("msg", "카트 조회 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

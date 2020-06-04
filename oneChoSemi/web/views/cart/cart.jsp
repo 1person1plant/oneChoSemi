@@ -1,5 +1,10 @@
+<%@page import="cartList.model.vo.Cart"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Cart> cartList = (ArrayList<Cart>)request.getAttribute("cartList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +34,7 @@
 	/* font end */
 </style>
     
-    <!-- 장바구니 통합 css -->
+<!-- 장바구니 통합 css -->
 <style>
     /* 테이블 크기 테스트 css */
     /* table, thead, tbody, tfoot, td, th{ border: 1px solid; } */
@@ -210,6 +215,9 @@
     .wishcardcol td {
         height: 30px;
     }
+    .wishcardcol tbody td:nth-child(2){
+        min-width: 100px
+    }
     .wishcardcol td[class^=wishprice]{
         text-align: right;
     }
@@ -258,12 +266,12 @@
     }
 </style>
 <!-- data sample -->
-<script> 
+<%-- <script> 
     var cartitem_img = "<%=request.getContextPath() %>/images/고무나무.jpg";
     var cartitem_title = "멜라닌고무나무 라탄바구니 세트";
     var cartitem_count = 2;
     var cartitem_price = "32000";
-</script>
+</script> --%>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -294,18 +302,25 @@
 	        </tr>
 	        </thead>
 	        <tbody>
+	        <%if(cartList.isEmpty()) {%>
 	            <tr>
 	                <td class="emptyCart" colspan="6">상품이 없습니다.</td>
 	            </tr>
-	        <tr class="cartitem">
-	            <td><input type="checkbox" class="cart_checkbox"></td>
-	            <td><img src="..." alt="상품"></td>
-	            <td>아이비 수경 재배 세트 1</td>
-	            <td><input class="cart_count" name="cart1" type="number" min="1" max="10" value="1" step="1"></td>
-	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
-	            <td><label for="trash1"><input type="button" id="trash1" class="trash"></input></label></td>
-	        </tr>
-	        <tr class="cartitem2">
+	        <%} else { %>
+	        	<%int i = 0; %>
+		        <%for(Cart c : (ArrayList<Cart>)cartList) {
+	        		i++;
+	        		out.println("<tr class='cartitem" + i + "'>");
+	        		out.println("<td><input type='checkbox' class='cart_checkbox'></td>");
+	        		out.println("<td><img src='" + request.getContextPath() + "/items_uploadFiles/" + c.getImageName() + "' alt='상품'></td>");
+	        		out.println("<td>" + c.getItemName() + "</td>");
+	        		out.println("<td><input class='cart_count' name='cart" + i + "' type='number' min='1' max='" + c.getItemMax() + "' value='" + c.getCartListCount() + "' step='1'></td>");
+	        		out.println("<td><span class='cal_price'>" + c.getCartListCount() * c.getItemPrice() + "</span><span class='price'>" + c.getItemPrice() + "</span></td>");
+	        		out.println("<td><label for='trash1'><input type='button' id='trash1' class='trash'></input></label></td>");
+	        		out.println("</tr>");
+	        	} %>
+	        <%} %>
+	        <%-- <tr class="cartitem2">
 	            <td><input type="checkbox" class="cart_checkbox"></td>
 	            <td><img src="<%=request.getContextPath() %>/images/고무나무.jpg" alt="상품"></td>
 	            <td>아이비 수경 재배 세트 2</td>
@@ -336,7 +351,7 @@
 	            <td><input class="cart_count" name="cart5" type="number" min="1" max="10" value="1" step="1"></td>
 	            <td><span class="cal_price">0</span><span class="price">13000</span></td>
 	            <td><label for="trash5"><input type="button" id="trash5" class="trash"></input></label></td>
-	        </tr>
+	        </tr> --%>
 	        </tbody>
 	        <tfoot>
 	        <tr>
@@ -348,7 +363,7 @@
 	        </tfoot>
 	    </table>
 	    <!-- 카트상품 정보 추가 -->
-	    <script>
+	    <!-- <script>
 	        $(function(){
 	            // each()를 써서 해결 할 수 있다.
 	            // 1. 카트 아이템
@@ -381,10 +396,8 @@
 	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
 	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
 	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	
-	            
 	        });
-	    </script>
+	    </script> -->
 	    <!-- 상품 삭제 스크립트 -->
 	    <script>
 	        $(function(){
@@ -472,9 +485,11 @@
 	
 	                    // increment
 	                    el.parent().on('click', '.add', function () {
-	                    if (el.val() < parseInt(el.attr('max')))
+	                    if (el.val() < parseInt(el.attr('max'))){
 	                        el.val(function(i, oldval) { return ++oldval; });
-	
+	                    } else {
+	                    	alert("1회 구매 최대 수량입니다.");
+	                    }
 	                        // 수량 증가 가격 계산
 	                        var td = el.parents("tr").children("td:nth-child(5)").children(".price").text();
 	                        el.parents("tr").children("td:nth-child(5)").children(".cal_price").text(td*el.val());
