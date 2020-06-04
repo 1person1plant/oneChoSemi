@@ -247,7 +247,7 @@
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		            <li class="nav-item">
-		                <a class="nav-link" style="cursor: pointer" onclick="document.getElementById('loginEx').style.display='block'">로그인</a>
+		                <a class="nav-link" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal">로그인</a>
 		            </li>
 		            <li class="nav-item">
 		                <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
@@ -255,8 +255,11 @@
 		        </ul>
 		    </div>
 		</nav>
-
-        <div id="loginSample"><!-- 로그인 샘플 시작 -->
+		
+    
+    <!-- 로그인 모달 붙이기 -->
+    <%@ include file="../member/login.jsp" %>
+<%--         <div id="loginSample"><!-- 로그인 샘플 시작 -->
 	        <div id="loginEx" class="modal">
 			  <form class="modal-content animate" action = "<%=request.getContextPath() %>/login.me" method="post" onsubmit="return validate();">
 			    <div class="imgcontainer">
@@ -282,12 +285,15 @@
 			    </div>
 			  </form>
 			</div>
-        </div><!-- 로그인 샘플 끝 -->
+        </div><!-- 로그인 샘플 끝 --> --%>
 	<%} else { %>
 	<!-- 로그인 성공 -->
 		   <nav class="navbar navbar-expand navbar-light" id="navbar-top">
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		            <ul class="navbar-nav ml-auto">
+		            	<li class="nav-item">
+							<label><%=loginUser.getMemberName() %>님의 방문을 환영합니다.</label>
+						</li>
 		            	<%if(adminChk.equals("Y")){ %>
 						<li class="nav-item">
 		                    <a class="nav-link" style="cursor: pointer" href="#">관리자 페이지</a>
@@ -306,7 +312,6 @@
 	<%} %>
 		</div>
     </header>
-    
     <!-- sticky-top은 header안에서 작동안함 -->
     <!--하단 nav-->
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" id="navbar-bot">
