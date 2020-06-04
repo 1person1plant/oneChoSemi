@@ -247,7 +247,7 @@
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		            <li class="nav-item">
-		                <a class="nav-link" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal">로그인</a>
+		                <a id="loginBtn" class="nav-link" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal">로그인</a>
 		            </li>
 		            <li class="nav-item">
 		                <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
@@ -407,7 +407,7 @@
         function goCart(){	// 만드는 중...
         	var userNo = $("#userNo").val();
         	<%if(result){%>
-        		document.getElementById('loginEx').style.display='block';
+        		$("#loginBtn").click();
 			<%} else {%>
 				location.href="<%=request.getContextPath()%>/cart.ca?userNo=" + userNo;
        		<%} %>

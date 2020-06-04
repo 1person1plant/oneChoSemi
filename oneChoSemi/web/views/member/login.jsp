@@ -1,48 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.Member"%>
-<%-- <%
-	Member loginUser = null;
-boolean result = false;
-String adminChk = "";
-if (session != null || !request.isRequestedSessionIdValid()) {
-	loginUser = (Member) session.getAttribute("loginUser");
-	if (loginUser == null) {
-		result = true;
-	} else {
-		//      adminChk = (String)session.getAttribute("admin");
-		adminChk = loginUser.getMemberAdmin();
-		result = false;
-	}
-	System.out.println("result " + result);
-}
-%> --%>
 <html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- 폰트 -->
-    <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
-
-    <style>
-        @font-face {
-            font-family: 'basicFont';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-  
-        /* font 적용할 때는 아래와 같이*/
-        * {
-            font-family: "basicFont";
-        }
-    </style>
 
     <!-- 아라 스타일 적용 -->
     <style>
@@ -54,9 +16,7 @@ if (session != null || !request.isRequestedSessionIdValid()) {
     </style>
     <!-- 아라 스타일 적용 -->
 </head>
-
 <body>
-	<%-- <%if(loginUser == null){ %> --%>
     <!-- Modal -->
     <form id = "loginForm" action = "<%=request.getContextPath() %>/login.me" 
 	method = "post">
@@ -122,17 +82,6 @@ if (session != null || !request.isRequestedSessionIdValid()) {
         </div>
     </div>
     </form>
-<%--     <!-- 로그인이 성공적으로 됐을 경우 -->
-	<%}else { %>
-		<div id="userInfo">
-			<label><%=loginUser.getMemberName() %>님의 방문을 환영합니다.</label>
-			<div class="btns" align="right">
-				<div id="logoutBtn" onclick="logout();">로그아웃</div>
-			</div>
-		</div>
-	<%} %> --%>
-	
-	</div>
 
 	<script>
 		function joinGo() {
@@ -144,12 +93,11 @@ if (session != null || !request.isRequestedSessionIdValid()) {
 		}
 		
 		function loginGo(){
-			if($.trim($("#userId").val()) == ""){ // 아이디는 공백 제거 후 입력 확인
+			if($.trim($("#memberId").val()) == ""){ // 아이디는 공백 제거 후 입력 확인
 				alert("아이디를 입력하세요");
 				$("#memberId").focus();
 				return false;
-			}
-			} else if($("#userPwd").val() == "") { // 비밀번호는 입력만 확인
+			} else if($("#memberPwd").val() == "") { // 비밀번호는 입력만 확인
 				alert("비밀번호를 입력하세요");
 				$("#memberPwd").focus();
 				return false;
@@ -157,31 +105,7 @@ if (session != null || !request.isRequestedSessionIdValid()) {
 				return true;
 						
 		}
-		
-<%-- 		// logout()
-		function logout(){
-			location.href="<%=request.getContextPath()%>/logout.me";
-			// logout.me인 LogoutServlet 이동
-		} --%>
+
 	</script>
-
-
-
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
 </body>
-
 </html>
