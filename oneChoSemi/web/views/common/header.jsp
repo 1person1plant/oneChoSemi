@@ -1,37 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%
+	Member loginUser = null;
 	boolean result = false;
 	String adminChk = "";
-	
-	Member loginUser = (Member)session.getAttribute("loginUser");
-//	String admin2 = loginUser.getMemberAdmin();
-//	String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
-//	System.out.println("admin1 " + admin1);
-	adminChk = (String)session.getAttribute("admin");
-	if(loginUser == null){
-		System.out.println("admin " + adminChk);
-		System.out.println("result1 " + result);
-		result = true;
-	} else {
-		System.out.println("admin " + adminChk);
-		System.out.println("result2 " + result);
-		result = false;
+	if(session!=null || !request.isRequestedSessionIdValid()){
+		loginUser = (Member)session.getAttribute("loginUser");
+		if(loginUser == null){
+			result = true;
+		} else {
+//		adminChk = (String)session.getAttribute("admin");
+			adminChk = loginUser.getMemberAdmin();
+			result = false;
+		}
+		System.out.println("result " + result);
 	}
-	System.out.println("result " + result);
-	
-	// 테스트 중
-//	if(session==null || !request.isRequestedSessionIdValid()){
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		adminChk = (String)session.getAttribute("adminChk");
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result1 " + result);
-//		result = true;
-//	} else {
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result2 " + result);
-//		result = false;
-//	}
-//	System.out.println("result3 " + result);
 %>
 <!DOCTYPE html>
 <html lang="ko">
