@@ -20,4 +20,13 @@ public class CartService {
 		return cartList;
 	}
 
+	public int deleteCart(ArrayList<Cart> deleteCart) {
+		Connection conn = getConnection();
+
+		int result = new CartDao().deleteCart(conn, deleteCart);
+				
+		close(conn);
+		return result;
+	}
+
 }

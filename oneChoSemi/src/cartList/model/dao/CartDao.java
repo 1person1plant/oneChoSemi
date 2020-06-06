@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import cartList.model.vo.Cart;
+import order.model.vo.Order;
 
 import static common.JDBCTemplate.close;
 
@@ -48,6 +49,32 @@ public class CartDao {
 		}
 
 		return cartList;
+	}
+
+	public int deleteCart(Connection conn, ArrayList<Cart> deleteCart) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "";
+		// TODO 미완성
+		
+		try {
+			for(int i = 0 ; i < deleteCart.size() ; i++) {
+				Cart ca = deleteCart.get(i);
+
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, ca.getCartListNo());
+				
+				result += pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
 	}
 
 }

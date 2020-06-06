@@ -1,28 +1,23 @@
 package cartList.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cartList.model.service.CartService;
-import cartList.model.vo.Cart;
-
 /**
- * Servlet implementation class CartListDeleteServlet
+ * Servlet implementation class DeleteWishServlet
  */
-@WebServlet("/cartDelete.ca")
-public class CartListDeleteServlet extends HttpServlet {
+@WebServlet("/deleteWish.wi")
+public class DeleteWishServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartListDeleteServlet() {
+    public DeleteWishServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +26,8 @@ public class CartListDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		ArrayList<Cart> deleteCart = new ArrayList<>();
-				
-		int result = new CartService().deleteCart(deleteCart);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
