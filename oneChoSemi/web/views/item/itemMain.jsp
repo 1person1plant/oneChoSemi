@@ -59,6 +59,8 @@
 <%@ include file="../common/header.jsp" %>
 <section>
 <!--SEARCH-->
+
+		
             <div class="container item-search">
                 <div class="row title-row">
                     <p class="h1">SEARCH</p>
@@ -94,11 +96,13 @@
             </script>
         
             <!--BEST-->
+            <form>
             <div class="container item-container">
                 <div class="row title-row">
                     <h1 class="display-6">BEST</h1>
                 </div>
                 <div class="row item-row">
+                <%}else {%>                
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
@@ -112,6 +116,7 @@
                             </div>
                         </div>
                     </div>
+                <%} %>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
@@ -153,6 +158,7 @@
                     </div>
                 </div>
             </div>
+            </form>
 
             <!--ALL-->
             <div class="container item-container">

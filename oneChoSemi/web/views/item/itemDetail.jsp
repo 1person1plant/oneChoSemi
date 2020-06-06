@@ -414,7 +414,7 @@
                             </div>
                             <hr>
                             <div class="row attachPhoto-modal">
-                                <input type="file" id="reviewPhoto-file">
+                                <input type="file" id="reviewPhoto-file" hidden>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center">
