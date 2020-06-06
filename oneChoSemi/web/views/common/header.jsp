@@ -6,6 +6,7 @@
 	String userNo = "";
 	if(session!=null || !request.isRequestedSessionIdValid()){
 		loginUser = (Member)session.getAttribute("loginUser");
+		System.out.println("로그인 유저 정보 : " + loginUser);
 		if(loginUser == null){
 			result = true;
 		} else {

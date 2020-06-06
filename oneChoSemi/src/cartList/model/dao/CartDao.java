@@ -18,7 +18,7 @@ public class CartDao {
 		
 		ArrayList<Cart> cartList = new ArrayList<>();
 		
-		String query = "SELECT MEMBER_NO , ITEM_NO , ITEM_NAME , ITEM_PRICE , ITEM_MAX , CARTLIST_COUNT , IMAGE_NAME FROM MEMBER_CARTLIST WHERE MEMBER_NO =?";
+		String query = "SELECT MEMBER_NO, CARTLIST_NO , ITEM_NO , ITEM_NAME , ITEM_PRICE , ITEM_MAX , CARTLIST_COUNT , IMAGE_NAME FROM MEMBER_CARTLIST WHERE MEMBER_NO =?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -28,6 +28,7 @@ public class CartDao {
 			
 			while(rSet.next()) {
 				Cart c = new Cart(rSet.getString("MEMBER_NO")
+								, rSet.getString("CARTLIST_NO")
 								, rSet.getString("ITEM_NO")
 								, rSet.getString("ITEM_NAME")
 								, rSet.getInt("ITEM_PRICE")

@@ -1,4 +1,4 @@
-package cartList.model.vo;
+package order.model.vo;
 
 import java.sql.Date;
 
