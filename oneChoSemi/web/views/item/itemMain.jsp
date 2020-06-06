@@ -102,52 +102,52 @@
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_dracaena_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-danger item-badge">best</span>                             
-                                <p class="card-title item-card-title">고무나무</p>
+                                <p class="card-title item-card-title">행운목</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_marimo_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-danger item-badge">best</span>                                                             
-                                <p class="card-title item-card-title">고무나무</p>
+                                <p class="card-title item-card-title">마리모</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_monstera_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-danger item-badge">best</span>                                                             
-                                <p class="card-title item-card-title">고무나무</p>
+                                <p class="card-title item-card-title">몬스테라</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_philiapeperomia_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-danger item-badge">best</span>                                                             
-                                <p class="card-title item-card-title">고무나무</p>
+                                <p class="card-title item-card-title">필리아페페</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
@@ -172,52 +172,52 @@
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_scindapsus_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-warning item-badge">new</span>                             
                                 <p class="card-title item-card-title">고무나무</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_snowsapphire_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-warning item-badge">new</span>                                                             
                                 <p class="card-title item-card-title">고무나무</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_spath_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-warning item-badge">new</span>                                                             
                                 <p class="card-title item-card-title">고무나무</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
-                                <img src="images/고무나무.jpg" class="card-img-top" alt="...">
+                                <img src="<%=request.getContextPath()%>/images/plant/water_tablepalm_main.jpg" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body item-card-body">
                                 <span class="badge badge-pill badge-warning item-badge">new</span>                                                             
                                 <p class="card-title item-card-title">고무나무</p>
                                 <p class="card-text item-card-text">48,000원</p>
-                                <a href="#" class="btn btn-outline-info btn-sm item-btn">VIEW DETAIL</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm item-btn">VIEW DETAIL</a>
                             </div>
                         </div>
                     </div>

@@ -72,7 +72,7 @@
 
 			/* 리뷰 쓰러 가기 누르는 공간 */
 			#myReview-writing {padding-top:0rem; padding-bottom:0.5rem; padding-left:1rem; padding-right:1rem; height:13rem;}
-			#myReview-writing-wrap {margin:0; width:100%; height:100%; text-align:center; padding:1rem; background-image:url("../../images/review-banner.jfif"); background-size:100%; background-repeat:no-repeat; background-position:center;}
+			#myReview-writing-wrap {margin:0; width:100%; height:100%; text-align:center; padding:1rem; background-image:url("<%=request.getContextPath()%>/images/review-banner.jfif"); background-size:100%; background-repeat:no-repeat; background-position:center;}
 			#goReview-btn {border:none; width:10rem; height:3rem; background-color: rgba(242,238,188,0.4); color:black;} 
 			/* 리뷰 쓰러 가기 누르는 공간 */
 			
@@ -122,6 +122,7 @@
             td:nth-of-type(1) {width:10rem;}
             td:nth-of-type(2) {width:45rem;}
             .pagination * {color:black;}
+            #review-set {color:gray;}
             /* review end */
 </style>
 </head>
@@ -309,7 +310,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
@@ -493,7 +494,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
@@ -523,7 +524,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
@@ -553,7 +554,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
@@ -583,7 +584,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
@@ -613,7 +614,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <div class="row review-set">
+                                    <div class="row review-set" id="review-set">
                                         <span class="review-id">kyeo**** /</span><span class="review-date">20-05-25</span>
                                     </div>
                                     <div class="row review-cont">
