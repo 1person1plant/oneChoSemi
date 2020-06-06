@@ -1,7 +1,5 @@
-<%@page import="cartList.model.vo.Cart"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="cartList.model.vo.Cart, java.util.ArrayList"%>
 <%
 	ArrayList<Cart> cartList = (ArrayList<Cart>)request.getAttribute("cartList");
 %>
