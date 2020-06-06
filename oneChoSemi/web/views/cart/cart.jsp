@@ -101,6 +101,9 @@
     .carttable td:nth-child(3) {
         min-width: 50px;
         width: auto;
+        orverlfow: hidden;
+        text-overflow: ellipsts;
+        white-space: nowrap;
     }
     .carttable tbody td:nth-child(3){
         min-width: 100px;
