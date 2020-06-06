@@ -33,6 +33,8 @@
 
             /* itemdetail page start */
             .item-container {margin-top:10rem;}
+            #iteminfo-itemmain-img {width:28.2rem; height:28.2rem; margin-left:3rem; margin-right:2rem;}
+            #itemmain-img {width:100%; height:100%;}
             .iteminfo-row .row {margin-bottom:0.2rem;}
             .title-row {border-bottom:0.3rem solid lightgray; margin-bottom:3rem;}
             #iteminfo-keyword {padding-top:0.5rem; padding-bottom:0.5rem; color:#1f598c}
@@ -137,10 +139,13 @@
                 </div>
                 <div class="row iteminfo-row">
                     <div class="col iteminfo-col-left">
+                    	<div class="iteminfo-itemmain-img" id="iteminfo-itemmain-img">
+                    		<img src="<%=request.getContextPath()%>/images/plant/soil_sansevieria_main.jpg" id="itemmain-img">
+                    	</div>
                     </div>
                     <div class="col iteminfo-col-right">
                         <div class="row iteminfo-title">
-                            <p class="h2 font-weight-bold my-auto iteminfo-title">스파티필럼</p>
+                            <p class="h2 font-weight-bold my-auto iteminfo-title">산세베리아</p>
                         </div>
                         <div class="row iteminfo-keyword" id="iteminfo-keyword">
                             <span class="h5 font-weight-bold my-auto iteminfo-keyword-hash" id="iteminfo-keyword-hash">#산소뿜뿜</span>
@@ -165,7 +170,7 @@
                             </div>
                             <div class="row iteminfo-afterSale" id="iteminfo-afterSale">
                                 <div class="col-10 iteminfo-afterSale-price" id="iteminfo-afterSale-price" style="color:#1f598c;">
-                                    <p class="h3 afterSale-price">&#8361;30,000</p>
+                                    <p class="h3 afterSale-price" style="font-weight:bold">&#8361;30,000</p>
                                 </div>
                                 <div class="col-2 iteminfo-icons" id="iteminfo-icons">
                                     <span class="col iteminfo-share" id="iteminfo-share" style="justify-content:center;">
@@ -272,7 +277,7 @@
                     <p class="h1">DETAIL</p>
                 </div>
                 <div class="row detail-row">
-                	<img id="detail-image" src="<%=request.getContextPath()%>/images/item/smim.jpg">
+                	<img id="detail-image" src="<%=request.getContextPath()%>/images/plant/soil_sansevieria.jpg">
                 </div>
             </div>
 
