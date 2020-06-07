@@ -24,38 +24,6 @@ fieldset {
 	text-align: center;
 }
 
-/* 좌측 메뉴 리스트 */
-.list-group a :hover {
-	background: #6AAED9;
-	color: white;
-	text-decoration: none;
-}
-
-.list-group a {
-	text-decoration: none;
-}
-
-.list-group :hover {
-	background: #6AAED9;
-	color: white;
-	transition: 0.3s;
-	text-decoration: none;
-}
-
-.list-group-item :hover {
-	color: white;
-	text-decoration: none;
-}
-
-.list-group-item a:hover {
-	color: white;
-}
-
-ul .list-group-item :hover {
-	color: white;
-}
-/* 좌측 메뉴 리스트 끝 */
-
 /* 테이블 좌측 라벨 td */
 td.mt-2 {
 	padding: 12px;
@@ -101,7 +69,7 @@ td {
 	/* Stay in place */
 	z-index: 1030;
 	/* Sit on top */
-	padding-top: 100px;
+	padding-top: 2%;
 	/* Location of the box */
 	left: 0;
 	top: 0;
@@ -148,6 +116,36 @@ ul ul {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+/* input 테두리 */
+input:focus {
+	outline: 2px solid #6AAED9;
+}
+
+label {
+	margin-bottom: none !important;
+	margin: 5px 0px;
+	padding: 5px 10px;
+	text-align: right;
+}
+/* input 테두리 */
+        input:focus {
+            outline: 2px solid #6AAED9;
+        }
+        input[type=password]{
+        	padding: 5px 10px;
+        	margin:5px 0;
+        	display:inline-block;
+        	border:1px solid #ccc;
+        }
+        /* 테이블 우측 input td */
+        td {
+            text-align: left;
+            width: 45%;
+        }
+        .table td, .table th{
+        	vertical-align:middle !important;
+        }
 </style>
 </head>
 <body>
@@ -155,36 +153,7 @@ ul ul {
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
-				<!-- 사이드 바 메뉴-->
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<!-- 패널 타이틀1 -->
-						<h3 class="panel-title">
-							<span>마이 페이지</span>
-						</h3>
-					</div>
-					<!-- 사이드바 메뉴목록1 -->
-					<ul class="list-group">
-						<a href="grade.jsp">
-							<li class="list-group-item">회원 등급</li>
-						</a>
-						<a href="inforEdit.jsp">
-							<li class="list-group-item">개인 정보 수정</li>
-						</a>
-						<a href="orderHistory.jsp">
-							<li class="list-group-item">주문 내역 조회</li>
-						</a>
-						<a href="wishList.jsp">
-							<li class="list-group-item">위시리스트</li>
-						</a>
-						<a href="withdrawal.jsp">
-							<li class="list-group-item">회원 탈퇴</li>
-						</a>
-					</ul>
-				</div>
-			</div>
-
+			<%@include file="myPageCategory.jsp"%>
 			<!-- 9단길이의 첫번째 열 -->
 			<div class='col-md-9'>
 				<fieldset>
@@ -272,81 +241,100 @@ ul ul {
 
 			</div>
 			<script>
-                function altFunction(otherFunction) {
-                    for (var i = 5; i > 0; i--) {
-                        var result = true;
-                        result = otherFunction(i);
-                        if (result == false) {
-                            break;
-                        }
-                    }
-                    if (result == true) {
-                        alert('회원 탈퇴가 완료되었습니다.');
-                    } else {
-                        alert('남아 주셔서 감사합니다.');
-                    }
-                }
-                function realt(i) {
-                    var result = true;
-                    if (i > 4) {
-                        result = confirm('왜 탈퇴함?');
-                    } else if (i > 3) {
-                        result = confirm('하지 마라.');
-                    } else if (i > 1) {
-                        result = confirm('하지 말라고 했다.');
-                    } else {
-                        result = confirm('잘 가라');
-                    }
-                    return result;
-                }
-            </script>
+				function altFunction(otherFunction) {
+					for (var i = 5; i > 0; i--) {
+						var result = true;
+						result = otherFunction(i);
+						if (result == false) {
+							break;
+						}
+					}
+					if (result == true) {
+						alert('회원 탈퇴가 완료되었습니다.');
+					} else {
+						alert('남아 주셔서 감사합니다.');
+					}
+				}
+				function realt(i) {
+					var result = true;
+					if (i > 4) {
+						result = confirm('왜 탈퇴함?');
+					} else if (i > 3) {
+						result = confirm('하지 마라.');
+					} else if (i > 1) {
+						result = confirm('하지 말라고 했다.');
+					} else {
+						result = confirm('잘 가라');
+					}
+					return result;
+				}
+			</script>
 
 			<script>
-                // Get the modal
-                var modal = document.getElementById("myModal");
+				// Get the modal
+				var modal = document.getElementById("myModal");
 
-                // Get the button that opens the modal
-                var btn = document.getElementById("myBtn");
+				// Get the button that opens the modal
+				var btn = document.getElementById("myBtn");
 
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+				// Get the <span> element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
 
-                // When the user clicks the button, open the modal 
-                btn.onclick = function () {
-                    modal.style.display = "block";
-                }
+				// When the user clicks the button, open the modal 
+				btn.onclick = function() {
+					modal.style.display = "block";
+				}
 
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function () {
-                    modal.style.display = "none";
-                }
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+					modal.style.display = "none";
+				}
 
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function (event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-            </script>
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+			</script>
 
 			<script>
-                $(function() {
-                    $('#password2').change(function () {
-                        if ($('#password1').val() != $(this).val()) {
-                            $('#password3').text('비밀번호 불일치').css('color', 'red');
-                        } else {
-                            $('#password3').text('비밀번호 일치').css('color', 'green');
-                        }
-                    });
-                    $('#password1').change(function () {
-                        if ($('#password2').val() != $(this).val() && $('#password2').val().length > 0) {
-                            $('#password3').text('비밀번호 불일치').css('color', 'red');
-                        } else if ($('#password2').val() == $(this).val()) {
-                            $('#password3').text('비밀번호 일치').css('color', 'green');
-                        }
-                    });
-                });
+				$(function() {
+					$('#password2').change(
+							function() {
+								if ($('#password1').val() != $(this).val()) {
+									$('#password3').text('비밀번호 불일치').css(
+											'color', 'red');
+								} else {
+									$('#password3').text('비밀번호 일치').css(
+											'color', 'green');
+								}
+							});
+					$('#password1').change(
+							function() {
+								if ($('#password2').val() != $(this).val()
+										&& $('#password2').val().length > 0) {
+									$('#password3').text('비밀번호 불일치').css(
+											'color', 'red');
+								} else if ($('#password2').val() == $(this)
+										.val()) {
+									$('#password3').text('비밀번호 일치').css(
+											'color', 'green');
+								}
+							});
+				});
+			</script>
+			<script>
+            	$(function(){
+            		$(".button1").mouseenter(function(){
+            			$(this).css({"background":"#6AAED9","color":"white","transition":"0.2s","border-radius":"8px"});
+            		}).mouseout(function(){
+            			$(this).css({"padding":"8px 18px","border-radius":"8px","color":"black","border":"1px solid #11538C","background-color":"white",
+            			"width":"105px", "height":"42px"});
+            		});
+            	});
             </script>
+
 			<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

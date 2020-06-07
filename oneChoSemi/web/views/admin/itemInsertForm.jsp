@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" onclick="location.href='<%=request.getContextPath()%>/list.it'">
                   <span data-feather="file"></span>
                   	상품조회/수정
                 </a>
@@ -182,16 +182,10 @@
                                 </div>
                                 <select class="custom-select" name="keyword" id="keyword" required>
                                   <option value="none">...</option>
-                                  <option value="K1">NEW</option>
-                                  <option value="K2">BEST</option>
-                                  <option value="K3">공기정화</option>
-                                  <option value="K4">반려동물 친화</option>
-                                  <option value="K5">NEW,공기정화</option>
-                                  <option value="K6">NEW,반려동물 친화</option>
-                                  <option value="K7">NEW,공기정화,반려동물 친화</option>
-                                  <option value="K8">BEST,공기정화</option>
-                                  <option value="K9">공기정화+베스트</option>
-                                  <option value="K10">BEST,공기정화,반려동물 친화</option>
+                                  <option value="K1">산소뿜뿜</option>
+                                  <option value="K2">반려동물 친화</option>
+                                  <option value="K3">산소뿜뿜&반려동물 친화</option>
+                                  
                                 </select>
                               </div>
                         </div>
@@ -209,7 +203,7 @@
 
                 <script>
                   $(function(){
-                    $("#itemName").change(function(){
+                    $("#itemName").keyup(function(){
 
 
                       var regExp1=/^[가-힣]{3,}$/;
@@ -785,7 +779,19 @@
     
     </script>
     
-    
+     <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+ 
 
   <%@ include file="../common/footer.jsp" %>
   

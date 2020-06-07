@@ -43,6 +43,22 @@ public class Item implements Serializable {
 		this.itemInfo = itemInfo;
 		this.itemMax = itemMax;
 	}
+	
+	
+
+
+	public Item(String itemName, String itemCategory, String itemKeywordNo, int itemPrice, int itemDiscount,
+			String itemDisplay, String itemInfo, int itemMax) {
+		super();
+		this.itemName = itemName;
+		this.itemCategory = itemCategory;
+		this.itemKeywordNo = itemKeywordNo;
+		this.itemPrice = itemPrice;
+		this.itemDiscount = itemDiscount;
+		this.itemDisplay = itemDisplay;
+		this.itemInfo = itemInfo;
+		this.itemMax = itemMax;
+	}
 
 
 	public Item(String itemNo, String itemName, String itemCategory, String itemKeywordNo, int itemPrice,

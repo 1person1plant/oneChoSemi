@@ -44,7 +44,7 @@ public class ItemInsertServlet extends HttpServlet {
 		
 		int maxSize=1024*1024*10;
 		String root=request.getSession().getServletContext().getRealPath("/");
-		String savePath=root+"item_uploadFiles/";
+		String savePath=root+"items_uploadFiles/";
 		MultipartRequest multiRequest=new MultipartRequest(request,savePath,maxSize,"UTF-8",new DefaultFileRenamePolicy());
 		
 		
@@ -78,16 +78,16 @@ public class ItemInsertServlet extends HttpServlet {
 		
 		//값넣기
 		ItemImage im=null;
-		for(int i=0;i<saveFiles.size();i++) {
+		
 			im=new ItemImage();
 			im.setmPath(savePath);
 			im.setsPath(savePath);
-			im.setmImgName(saveFiles.get(i));
-			im.setsImgName(saveFiles.get(i));
+			im.setmImgName(saveFiles.get(0));
+			im.setsImgName(saveFiles.get(1));
 			im.setmCategory(1);
 			im.setsCategory(2);
 			
-		}
+		
 		
 		ItemService is=new ItemService();
 		

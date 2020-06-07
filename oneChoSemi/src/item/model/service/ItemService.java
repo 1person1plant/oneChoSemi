@@ -7,6 +7,7 @@ import item.model.vo.ItemImage;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class ItemService {
 
@@ -56,6 +57,34 @@ public class ItemService {
 		}
 		
 		return result;
+	}
+
+	public ArrayList<Item> selectAllItems() {
+		
+		Connection conn=getConnection();
+		
+		ArrayList<Item> items=new ItemDao().selectAllItems(conn);
+		
+		close(conn);
+		return items;
+	}
+
+	public ItemImage selectItemImg(String pNum) {
+		
+		Connection conn=getConnection();
+		ItemImage itemImg=new ItemDao().selectItemImg(conn,pNum);
+		
+		close(conn);
+		return itemImg;
+	}
+
+	public ArrayList<ItemImage> selectItemImg() {
+		
+		Connection conn=getConnection();
+		ArrayList<ItemImage> images=new ItemDao().selectItemImg(conn);
+		
+		close(conn);
+		return images;
 	}
 
 }
