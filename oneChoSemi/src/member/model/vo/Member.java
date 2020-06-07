@@ -89,10 +89,10 @@ public class Member implements Serializable{
 	public void setMemberAdmin(String memberAdmin) {
 		this.memberAdmin = memberAdmin;
 	}
-	public String getmemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setmemberId(String memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public String getMemberPwd() {

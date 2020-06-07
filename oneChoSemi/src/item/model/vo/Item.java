@@ -5,6 +5,7 @@ import java.sql.Date;
 
 public class Item implements Serializable {
 	
+
 	/**
 	 * 
 	 */
@@ -23,6 +24,7 @@ public class Item implements Serializable {
 	private Date UDate;//수정일
 	private int itemMax;//최대 구매 가능 수량
 	private String itemSale;//삭제 여부 
+
 	
 	
 	public Item() {
