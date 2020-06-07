@@ -1,26 +1,24 @@
-<%@page import="cartList.model.vo.Cart"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="cartList.model.vo.Cart, java.util.ArrayList"%>
 <%
 	ArrayList<Cart> cartList = (ArrayList<Cart>)request.getAttribute("cartList");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
-<title>Cho-당신을 위한 반려식물</title>
-<!-- 타이틀 아이콘 -->
-<link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- popper -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<!-- 아이콘 -->
-<script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
-<!-- jQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" initial-scale="1">
+	<title>Cho-당신을 위한 반려식물</title>
+	<!-- 타이틀 아이콘 -->
+	<link rel="shortcut icon" type="image⁄x-icon" href="<%=request.getContextPath() %>/images/logo.png">
+	<!-- 부트스트랩 -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- popper -->
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<!-- 아이콘 -->
+	<script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
     
 <style>
 	/* font start */
@@ -88,7 +86,12 @@
         height: 300px;
     }
     .carttable thead td:nth-child(1) {
-        width: 50px; 
+        width: 50px;
+        font-size: 0px;
+    }
+    .carttable tbody td:nth-child(1) {
+        width: 50px;
+        font-size: 0px;
     }
     .carttable thead td:nth-child(2) {
         width: 120px; 
@@ -101,6 +104,9 @@
     .carttable td:nth-child(3) {
         min-width: 50px;
         width: auto;
+        orverlfow: hidden;
+        text-overflow: ellipsts;
+        white-space: nowrap;
     }
     .carttable tbody td:nth-child(3){
         min-width: 100px;
@@ -285,7 +291,7 @@
 	    <table class="carttable">
 	        <thead>
 	        <tr>
-	            <td><input type="checkbox"></td>
+	            <td><input type="checkbox" name="clearCart"></td>
 	            <td>전체</td>
 	            <td></td>
 	            <td></td>
@@ -307,66 +313,89 @@
 	                <td class="emptyCart" colspan="6">상품이 없습니다.</td>
 	            </tr>
 	        <%} else { %>
+				<form id="orderForm" action="<%=request.getContextPath() %>/order.or?userNo=<%=userNo %>" method="post">
 	        	<%int i = 0; %>
 		        <%for(Cart c : (ArrayList<Cart>)cartList) {
 	        		i++;
 	        		out.println("<tr class='cartitem" + i + "'>");
-	        		out.println("<td><input type='checkbox' class='cart_checkbox'></td>");
+	        		out.println("<td><input type='checkbox' class='cart_checkbox' name='cartNo" + i + "'>" + c.getItemNo() + "</td>");
 	        		out.println("<td><img src='" + request.getContextPath() + "/items_uploadFiles/" + c.getImageName() + "' alt='상품'></td>");
 	        		out.println("<td>" + c.getItemName() + "</td>");
-	        		out.println("<td><input class='cart_count' name='cart" + i + "' type='number' min='1' max='" + c.getItemMax() + "' value='" + c.getCartListCount() + "' step='1'></td>");
+	        		out.println("<td><input class='cart_count' name='cartCount" + i + "' type='number' min='1' max='" + c.getItemMax() + "' value='" + (int)c.getCartListCount() + "' step='1'></td>");
 	        		out.println("<td><span class='cal_price'>" + c.getCartListCount() * c.getItemPrice() + "</span><span class='price'>" + c.getItemPrice() + "</span></td>");
 	        		out.println("<td><label for='trash1'><input type='button' id='trash1' class='trash'></input></label></td>");
 	        		out.println("</tr>");
 	        	} %>
+				</form>
 	        <%} %>
-	
-	        </tbody>
+			</tbody>
 	        <tfoot>
 	        <tr>
 	            <td colspan="6">
-	            <button class="btn btn-outline-info my-5 my-sm-0">계속쇼핑</button>
-	            <button class="btn btn-outline-info my-5 my-sm-0">주문하기</button>
+	            <button class="btn btn-outline-info my-5 my-sm-0" onclick="location.href='index.jsp'">계속쇼핑</button>
+	            <button class="btn btn-outline-info my-5 my-sm-0" onclick="order()">주문하기</button>
 	            </td>
 	        </tr>
 	        </tfoot>
 	    </table>
-	    <!-- 카트상품 정보 추가 -->
-	    <!-- <script>
-	        $(function(){
-	            // each()를 써서 해결 할 수 있다.
-	            // 1. 카트 아이템
-	            $(".carttable").children("tbody").children("tr:nth-child(2)").children("td:nth-child(2)").children("img").attr("src", cartitem_img);
-	            $(".carttable").children("tbody").children("tr:nth-child(2)").children("td:nth-child(3)").text(cartitem_title);
-	            $(".carttable").children("tbody").children("tr:nth-child(2)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
-	            $(".carttable").children("tbody").children("tr:nth-child(2)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
-	            $(".carttable").children("tbody").children("tr:nth-child(2)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	            // 2. 카트 아이템
-	            $(".carttable").children("tbody").children("tr:nth-child(3)").children("td:nth-child(2)").children("img").attr("src", cartitem_img);
-	            $(".carttable").children("tbody").children("tr:nth-child(3)").children("td:nth-child(3)").text(cartitem_title);
-	            $(".carttable").children("tbody").children("tr:nth-child(3)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
-	            $(".carttable").children("tbody").children("tr:nth-child(3)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
-	            $(".carttable").children("tbody").children("tr:nth-child(3)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	            // 3. 카트 아이템
-	            $(".carttable").children("tbody").children("tr:nth-child(4)").children("td:nth-child(2)").children("img").attr("src", cartitem_img);
-	            $(".carttable").children("tbody").children("tr:nth-child(4)").children("td:nth-child(3)").text(cartitem_title);
-	            $(".carttable").children("tbody").children("tr:nth-child(4)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
-	            $(".carttable").children("tbody").children("tr:nth-child(4)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
-	            $(".carttable").children("tbody").children("tr:nth-child(4)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	            // 4. 카트 아이템
-	            $(".carttable").children("tbody").children("tr:nth-child(5)").children("td:nth-child(2)").children("img").attr("src", cartitem_img);
-	            $(".carttable").children("tbody").children("tr:nth-child(5)").children("td:nth-child(3)").text(cartitem_title);
-	            $(".carttable").children("tbody").children("tr:nth-child(5)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
-	            $(".carttable").children("tbody").children("tr:nth-child(5)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
-	            $(".carttable").children("tbody").children("tr:nth-child(5)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	            // 5. 카트 아이템
-	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(2)").children("img").attr("src", cartitem_img);
-	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(3)").text(cartitem_title);
-	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(4)").children().children("input").val(cartitem_count);
-	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(5)").children("span[class=price]").text(cartitem_price);
-	            $(".carttable").children("tbody").children("tr:nth-child(6)").children("td:nth-child(5)").children("span[class=cal_price]").text(cartitem_count*cartitem_price);
-	        });
-	    </script> -->
+	    <!-- 수량 버튼 스크립트 -->
+	    <script>
+	        (function ($) {
+	            $.fn.spinner = function() {
+	                this.each(function() {
+	                    var el = $(this);
+	
+	                    // add elements
+	                    el.wrap('<span class="spinner"></span>');
+	                    el.before('<span class="sub">-</span>');
+	                    el.after('<span class="add">+</span>');
+	
+	                    // substract
+	                    el.parent().on('click', '.sub', function () {
+	                    if (el.val() > parseInt(el.attr('min'))){
+	                        el.val(function(i, oldval) { 
+	                        	return --oldval; 
+	                        });
+	                        console.log(el.val());
+	                    }
+	
+	                        // 수량 감소 가격 계산 
+	                        var td = el.parents("tr").children("td:nth-child(5)").children(".price").text();
+	                        el.parents("tr").children("td:nth-child(5)").children(".cal_price").text(td*el.val());
+	                    });
+	
+	                    // increment
+	                    el.parent().on('click', '.add', function () {
+	                    if (el.val() < parseInt(el.attr('max'))){
+	                        el.val(function(i, oldval) { return ++oldval; });
+	                        console.log(el.val());
+	                    } else {
+	                    	alert("1회 구매 최대 수량입니다.");
+	                    }
+	                        // 수량 증가 가격 계산
+	                        var td = el.parents("tr").children("td:nth-child(5)").children(".price").text();
+	                        el.parents("tr").children("td:nth-child(5)").children(".cal_price").text(td*el.val());
+	                    });
+	                });
+	            };
+	        })(jQuery);// 수량 버튼 스크립트 끝
+	        $('input[class=cart_count]').spinner();
+	    </script>
+	    
+	    <script>
+			function order() {
+				/* var checkboxs= $("[class=cart_checkbox]");
+                for(var i = 0; i < checkboxs.length ; i++){
+                    if(checkboxs[i].checked == false){
+                    	checkboxs[i].attr("disabled",true);
+                    	console.log(checkboxs[i].val());
+                    }
+                } */
+				$("#orderForm").submit();
+			}	
+	    
+		</script>
+
 	    <!-- 상품 삭제 스크립트 -->
 	    <script>
 	        $(function(){
@@ -422,54 +451,10 @@
 	                    checkEmptyCart();
 	                }
 	            });
-	            // 상품이 없으면 상품 없음 행 보임
-//	            function checkEmptyCart(){                    
-//	                if($(".carttable > tbody tr").length == 1){
-//	                    $(".emptyCart").css("display","table-cell");
-//	                }
-	            }
 	        });
 	    </script>
-	    <!-- 수량 버튼 스크립트 -->
-	    <script>
-	        (function ($) {
-	            $.fn.spinner = function() {
-	                this.each(function() {
-	                    var el = $(this);
-	
-	                    // add elements
-	                    el.wrap('<span class="spinner"></span>');
-	                    el.before('<span class="sub">-</span>');
-	                    el.after('<span class="add">+</span>');
-	
-	                    // substract
-	                    el.parent().on('click', '.sub', function () {
-	                    if (el.val() > parseInt(el.attr('min')))
-	                        el.val(function(i, oldval) { return --oldval; });
-	
-	                        // 수량 감소 가격 계산 
-	                        var td = el.parents("tr").children("td:nth-child(5)").children(".price").text();
-	                        el.parents("tr").children("td:nth-child(5)").children(".cal_price").text(td*el.val());
-	                    });
-	
-	                    // increment
-	                    el.parent().on('click', '.add', function () {
-	                    if (el.val() < parseInt(el.attr('max'))){
-	                        el.val(function(i, oldval) { return ++oldval; });
-	                    } else {
-	                    	alert("1회 구매 최대 수량입니다.");
-	                    }
-	                        // 수량 증가 가격 계산
-	                        var td = el.parents("tr").children("td:nth-child(5)").children(".price").text();
-	                        el.parents("tr").children("td:nth-child(5)").children(".cal_price").text(td*el.val());
-	                    });
-	                });
-	            };
-	        })(jQuery);// 수량 버튼 스크립트 끝
-	        $('input[class=cart_count]').spinner();
-	    </script>
+	    
 	</div>
-	
 	<!-- 위시 리스트 -->
 	<div class="container wishlist-container">
 	    <div class="listhead">

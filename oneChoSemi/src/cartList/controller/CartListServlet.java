@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cartList.model.service.CartService;
 import cartList.model.vo.Cart;
@@ -35,9 +36,9 @@ public class CartListServlet extends HttpServlet {
 		System.out.println("CartListServlet : " + userNo);
 		
 		ArrayList<Cart> cartList = new CartService().cartList(userNo);
-		
-		System.out.println("CartListServlet cartList : " + cartList);
-		System.out.println("cartList is empty? : " + cartList.isEmpty());
+
+//		System.out.println("CartListServlet cartList : " + cartList);
+//		System.out.println("cartList is empty? : " + cartList.isEmpty());
 		if(cartList != null) {
 			request.setAttribute("cartList", cartList);
 			request.getRequestDispatcher("views/cart/cart.jsp").forward(request, response);

@@ -3,3 +3,7 @@
 /LoginServlet.class
 /LogoutServlet.class
 /UpdateMemberServlet.class
+/JoinIdChkServlet.class
+/KakaoLoginServlet.class
+/SearchIdServlet.class
+/SearchPwdServlet.class

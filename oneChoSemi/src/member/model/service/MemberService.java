@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import member.model.vo.Rank;
 
 public class MemberService {
 
@@ -78,6 +79,23 @@ public class MemberService {
 	 */
 	public Member searchPwdMember(Member member) {
 		return null;
+	}
+	
+	
+	/**
+	 * 등급 
+	 * @param userNo
+	 * @return
+	 */
+	public Rank rankDetail(String userNo) {
+		Connection conn = null;
+		conn = getConnection();
+
+		System.out.println("여기옴?dao");
+		Rank rankDetail = new MemberDao().rankDetail(conn, userNo);
+		
+		close(conn);
+		return rankDetail;
 	}
 
 }

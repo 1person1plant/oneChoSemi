@@ -1,11 +1,16 @@
 package cartList.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cartList.model.service.CartService;
+import cartList.model.vo.Cart;
 
 /**
  * Servlet implementation class CartListDeleteServlet
@@ -26,8 +31,12 @@ public class CartListDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		
+		ArrayList<Cart> deleteCart = new ArrayList<>();
+				
+		int result = new CartService().deleteCart(deleteCart);
+		
 	}
 
 	/**

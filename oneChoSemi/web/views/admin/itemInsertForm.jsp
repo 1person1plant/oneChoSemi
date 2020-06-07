@@ -4,32 +4,27 @@
 <html lang="ko">
 
 <head>
-   
-    <style>
-   
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--title icon-->
+    <link rel="shortcut icon" type="image⁄x-icon" href="img_main/logo.png">
+    <title>Cho-당신을 위한 반려식물</title>
+    
+    <!--icon-->
+    <script src="https://kit.fontawesome.com/4b6b63d8f6.js" crossorigin="anonymous"></script>
 
     
-     #navbar-vertical a{
-      color: gray;
-    }
-
-    #navbar-vertical ul li{
-      list-style-type: none;
-    }
-
-
-
-    #navbar-vertical ul li a{
-        padding: 0;
-        margin: 0;
-        color: gray;
-        list-style-type: none;
-    }
-
-    #navbar-vertical ul li a:hover{
-      background-color: #8EACBF !important;
-      color: white !important;
-    }
+    <!--jQuery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+   
+    <style>
 
 
   </style>
@@ -74,7 +69,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" onclick="location.href='<%=request.getContextPath()%>/list.it'">
                   <span data-feather="file"></span>
                   	상품조회/수정
                 </a>
@@ -161,7 +156,7 @@
             <h1 style="margin-top: 30px;margin-bottom: 80px; text-align: left;">상품등록</h1>
 
       
-            <form class="needs-validated">
+            <form class="needs-validated" id="createItem" method="post" encType="multipart/form-data" action="<%=request.getContextPath()%>/insert.it" onsubmit="return validate();">
 
                 <div class="mb-3">
                     <label for="validationServer02">카테고리&키워드</label>
@@ -171,10 +166,10 @@
                                 <div class="input-group-prepend">
                                   <label class="input-group-text" for="category">카테고리</label>
                                 </div>
-                                <select class="custom-select" name="category id="category" required>
-                                  <option>...</option>
-                                  <option value="1">HANGING</option>
-                                  <option value="2">PLANT</option>
+                                <select class="custom-select" name="category" id="category" required>
+                                  <option value="none">...</option>
+                                  <option value="HANGING">HANGING</option>
+                                  <option value="PLANT">PLANT</option>
                                  
                                 </select>
                               </div>
@@ -186,14 +181,11 @@
                                   <label class="input-group-text" for="keyword">키워드</label>
                                 </div>
                                 <select class="custom-select" name="keyword" id="keyword" required>
-                                  <option>...</option>
-                                  <option value="1">동물친화</option>
-                                  <option value="2">공기정화</option>
-                                  <option value="3">동물친화+공기정화</option>
-                                  <option vlaue="4">신상품</option>
-                                  <option value="5">베스트</option>
-                                  <option value="6">동물친화+베스트</option>
-                                  <option value="7">공기정화+베스트</option>
+                                  <option value="none">...</option>
+                                  <option value="K1">산소뿜뿜</option>
+                                  <option value="K2">반려동물 친화</option>
+                                  <option value="K3">산소뿜뿜&반려동물 친화</option>
+                                  
                                 </select>
                               </div>
                         </div>
@@ -211,7 +203,7 @@
 
                 <script>
                   $(function(){
-                    $("#itemName").change(function(){
+                    $("#itemName").keyup(function(){
 
 
                       var regExp1=/^[가-힣]{3,}$/;
@@ -238,9 +230,7 @@
                         <span class="input-group-text">&#8361;</span>
                       </div>
                     <input type="number" min="0" class="form-control is-invalid" id="price" name="price" placeholder="정가를 입력하세요." required>
-                    <div class="input-group-append">
-                      <span class="input-group-text">원</span>
-                    </div> 
+                    
                     <div class="invalid-feedback">
                       	숫자를 입력하세요.
                     </div>
@@ -281,9 +271,6 @@
                         <span class="input-group-text">&#8361;</span>
                       </div>
                     <input type="number" min="0" class="form-control is-invalid" id="discount" name="discount" placeholder="할인가를 입력하세요." required>
-                    <div class="input-group-append">
-                      <span class="input-group-text">원</span>
-                    </div> 
                     <div class="invalid-feedback">
                        	 정가보다 큰 금액은 입력할 수 없어요.
                     </div>
@@ -329,6 +316,47 @@
 
                   
                   </script>
+                  
+                  
+               
+                  
+                  <div class="mb-3" style="margin-top: 40px;">
+                    <label for="maxbuy">최대 구매 수량</label>
+                    <div class="input-group mb-3">
+                    <input type="number" min="0" class="form-control is-invalid" id="maxbuy" name="maxbuy" placeholder="최대 구매 수량을 입력하세요." required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">개</span>
+                    </div> 
+                    <div class="invalid-feedback">
+                      	숫자를 입력하세요.
+                    </div>
+                    </div>
+                    
+                  </div>
+                  <script>
+
+                    $(function(){
+
+                      $("#maxbuy").change(function(){
+
+                        var regExp4=/^[0-9]{1,}$/;
+  
+                        if(regExp4.test($("#maxbuy").val())){
+                          $("#maxbuy").removeClass("is-invalid");
+                          $("#maxbuy").addClass("is-valid");
+                        }else{
+                          $("#maxbuy").removeClass("is-valid");
+                          $("#maxbuy").addClass("is-invalid");
+                        }
+
+
+                      })
+
+
+                    });
+                  </script>
+                  
+                  
 
                   <div class="mb-3" style="margin-top: 40px;">
                     <label for="stock">재고수량</label>
@@ -347,7 +375,7 @@
 
                     $(function(){
 
-                      $("#stock").keyup(function(){
+                      $("#stock").change(function(){
 
                         var regExp4=/^[0-9]{1,}$/;
   
@@ -365,42 +393,11 @@
 
                     });
                   </script>
+                  
+                 
 
-                   <div class="mb-3" style="margin-top: 40px;">
-                    <label for="stock">최대 구매 수량</label>
-                    <div class="input-group mb-3">
-                    <input type="number" min="0" class="form-control is-invalid" id="maxBuy" name="maxBuy" placeholder="최대 구매 수량을 입력하세요." required>
-                    <div class="input-group-append">
-                      <span class="input-group-text">개</span>
-                    </div> 
-                    <div class="invalid-feedback">
-                     	 숫자를 입력하세요.
-                    </div>
-                    </div>
-                  </div>
-
-                  <script>
-
-                    $(function(){
-
-                      $("#maxBuy").keyup(function(){
-
-                        var regExp5=/^[0-9]{1,}$/;
-  
-                        if(regExp5.test($("#maxBuy").val())){
-                          $("#stock").removeClass("is-invalid");
-                          $("#stock").addClass("is-valid");
-                        }else{
-                          $("#stock").removeClass("is-valid");
-                          $("#stock").addClass("is-invalid");
-                        }
-
-
-                      })
-
-
-                    });
-                  </script>
+                  
+                  
 
                 <div class="mb-3" style="margin-top: 40px;">
                   <label for="validationTextarea">상세설명</label>
@@ -432,7 +429,7 @@
                       <label class="input-group-text" for="display">전시유무</label>
                     </div>
                     <select class="custom-select" id="display" name="display" required>
-                      <option>...</option>
+                      <option value="none">...</option>
                       <option value="Y">전시중</option>
                       <option value="N">전시중지</option>
                     </select>
@@ -550,6 +547,7 @@
                         var file = files[0];
                         
                         document.getElementById("mdroplabel").innerHTML = file.name;
+						$("#mainImg").val(file.name);
                         $("#mainImg").next().text(file.name);
 
                         
@@ -591,7 +589,7 @@
                     <span class="input-group-text" id="fileadd02">상세이미지</span>
                   </div>
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="subImg" aria-describedby="fileadd02" accept="image/*" onchange="loadSubFile(event)">
+                    <input type="file" class="custom-file-input" id="subImg" name="subImg" aria-describedby="fileadd02" accept="image/*" onchange="loadSubFile(event)">
                     <label class="custom-file-label" for="subImg">파일을 선택하세요.</label>
                   </div>
                 </div>
@@ -668,6 +666,7 @@
                         var file = files[0];
                         
                         document.getElementById("sdroplabel").innerHTML = file.name;
+						$("#subImg").val(file.name);
                         $("#subImg").next().text(file.name);
 
                         
@@ -741,10 +740,64 @@
 
 
   </section>
+  
+   <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    
+  
+      <script>
+    	function validate(){
+    		var category=$("#category").val();
+    		var keyword=$("#keyword").val();
+    		var display=$("display").val();
+    		
+    		if(category=="none"){
+    			alert("카테고리를 선택해주세요.");
+    			return false;
+    		}
+    		
+    		if(keyword=="none"){
+    			alert("키워드를 선택해주세요.");
+    			return false;
+    		}
+    		
+    		if(display=="none"){
+    			alert("전시상태를 선택해주세요.");
+    			return false;
+    		}
+    		
+    	}
+    
+    </script>
+    
+     <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+ 
 
   <%@ include file="../common/footer.jsp" %>
   
  
+
+    
  
     
    
