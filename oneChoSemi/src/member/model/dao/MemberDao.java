@@ -8,9 +8,16 @@ import java.sql.SQLException;
 import member.model.vo.Member;
 
 import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.getConnection;
 
 public class MemberDao {
-
+	
+	/**
+	 * 로그인
+	 * @param conn
+	 * @param member
+	 * @return
+	 */
 	public Member loginMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -59,8 +66,7 @@ public class MemberDao {
 									   rs.getInt("MEMBER_POINT"),
 									   rs.getString("MEMBER_RANK")
 									   );
-			}
-//			System.out.println("MemberDao : " + loginUser);
+			}		
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,5 +78,59 @@ public class MemberDao {
 		return loginUser;
 	}
 
-
+	
+	/**
+	 * 카카오 로그인 기능
+	 * @param member
+	 * @return
+	 */
+	public Member kakaoLoginMember(Connection conn, Member member) {
+		return null;
+	}
+	
+	/**
+	 * 회원가입
+	 * @param member 회원가입을 한 회원 정보
+	 * @return
+	 */
+	public int insertMember(Connection conn, Member member) {
+		return 0;
+	}
+	
+	/**
+	 * 카카오 회원가입 
+	 * @param member
+	 * @return
+	 */
+	public int kakaoinsertMember(Connection conn, Member member) {
+		return 0;
+	}
+	
+	/**
+	 * 아이디 중복체크
+	 * @param id 회원가입시에 입력한 아이디
+	 * <br> Count 쿼리문을 통해서 0이면 중복이 없고 1이면 중복이 있다만 체크
+	 * @return
+	 */
+	public int joinIdChkMember(Connection conn, String id) {
+		return 0;
+	}
+	
+	/**
+	 * 아이디 찾기
+	 * @param member 입력된 휴대폰 번호+이메일
+	 * @return
+	 */
+	public Member searchIdMember(Connection conn, Member member) {
+		return null;
+	}
+	
+	/**
+	 * 비밀번호 찾기
+	 * @param member 입력된 아이디 +이메일 
+	 * @return
+	 */
+	public Member searchPwdMember(Connection conn, Member member) {
+		return null;
+	}
 }

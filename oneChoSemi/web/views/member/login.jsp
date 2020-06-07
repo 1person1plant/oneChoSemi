@@ -15,6 +15,15 @@
         }
     </style>
     <!-- 아라 스타일 적용 -->
+    <!-- 카카오 로그인 연결 (리소스) -->
+    <script	src="<%=request.getContextPath() %>/resource/kakaoLogin.js"></script>	
+    <script>
+    	Kakao.init('3e25c4cd9076807d8c95d864db76f0c4');
+    	Kakao.isInitialized();
+    	
+    	console.log('카카오');
+    	console.log('카카오' + Kakao.isInitialized());
+    </script>
 </head>
 <body>
     <!-- Modal -->
@@ -71,7 +80,7 @@
                 <div class="modal-footer" style="background: #F2F1DF;">
                     <div class="row  col-md-12">
                         <div class="col-md-6" align="left">
-                            <button type="button" class="btn btn-secondary">카카오</button>
+                            <button type="button" class="btn btn-secondary" onclick="kakaoLogin();">카카오</button>
                         </div>
                         <div class="col-md-6" align="right">
                             <button type="button" class="btn btn-primary" id="ara_btn_color" onclick="findAcctGo();">계정찾기</button>
@@ -83,6 +92,11 @@
     </div>
     </form>
 
+	<form id="kakaoForm" action="<%=request.getContextPath()%>/KakaoLoginServlet" hidden=true>
+		<input type="hidden" name="kakaoId" id="kakaoId">
+		<input type="hidden" name="kakaoNm" id="kakaoNm">
+	</form>
+	
 	<script>
 		function joinGo() {
 			location.href="<%=request.getContextPath()%>/views/member/join.jsp";
@@ -105,7 +119,38 @@
 				return true;
 						
 		}
+		
+		// 카카오 로그인 스크립트
+		function kakaoLogin() {
+			Kakao.Auth.loginForm({
+				success : function(response) {
+					console.log("성공" + response);
 
+					Kakao.API.request({
+						url : '/v2/user/me',
+						success : function(response) {
+							console.log(response);
+								debugger;
+								
+							$('#kakaoId').val(response.id);
+							$('#kakaoNm').val(response.properties.nickname);
+							$('#kakaoForm').submit();
+							// 자동 회원가입 기능 (ajax)
+							//1. response.id(카카오 사용자 고유  id)가 테이블에 존재할 경우  로그인 시키기
+
+							//2. response.id가 테이블에 존재하지 않을 경우 자동으로  insert한 후에 로그인 시키기
+
+						},
+						fail : function(error) {
+							console.log(error);
+						}
+					});
+				},
+				fail : function(error) {
+					console.log("실패" + error);
+				},
+			});
+		}
 	</script>
 </body>
 </html>
