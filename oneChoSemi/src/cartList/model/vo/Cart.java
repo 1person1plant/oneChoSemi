@@ -1,46 +1,132 @@
 package cartList.model.vo;
 
-import java.sql.Date;
+import java.io.Serializable;
 
-public class Cart {
-	private String orderNo;				// 주문 번호 pk
-	private String itemNo;				// 상품 번호 pk
-
-	private String itemName;			// 상품 이름
-	private int itemPrice;				// 상품 가격
-	private int itemDisCount;			// 상품 할인가
-	private int itemMax;				// 상품 구매 최대 수량
+public class Cart implements Serializable{
 	
-	private String imagepath;			// 이미지 경로
-	private String imageName;			// 이미지 이름
-
-	private String memberId;			// 회원 아이디
-	private String memberName;			// 회원 이름
-	private int memberPhone1;			// 회원 전화번호 앞 자리
-	private int memberPhone2;			// 회원 전화번호 중간 자리
-	private int memberPhone3;			// 회원 전화번호 뒷 자리
-	private int memberPostcode;			// 회원 우편번호
-	private String memberAddress1;		// 회원 주소
-	private String memberAddress2;		// 회원 상세 주소
-	private int memberPoint;			// 회원 보유포인트
-	private String rankPointRat;		// 등급 적립율
-	private String rankPointCap;		// 등급 포인트 사용 한도
-	
-	private Date orderDate; 			// 주문 일시
-	private int	orderCount; 			// 주문 수량
-	private int	orderUsePoint; 			// 사용 포인트
-	private String orderName; 			// 수령자 이름
-	private int orderPhone1;			// 수령자 전화번호 앞 자리
-	private int orderPhone2;			// 수령자 전화번호 중간 자리
-	private int orderPhone3;			// 수령자 전화번호 뒷 자리
-	private int orderPostcode;			// 수령자 우편번호
-	private String orderAddress1;		// 수형자 주소
-	private String orderAddress2;		// 수령자 상세 주소
-	private String orderRequest;		// 수령자 요청사항
-	private int orderDCost;				// 배송비
-		
-	private String deluveryCode;		// 배송상태(배송전/배송중/배송후)
-	private String paymentCode;			// 입금코드(입금전/입금후)
-
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4898290017598692978L;
+	private String memberNo;	// 회원 번호
+	private String cartListNo;	// 장바구니 번호
+	private String itemNo;		// 상품 번호
+	private String itemName;	// 상품 이름
+	private int itemPrice;		// 상품 가격
+	private int itemMax;		// 상품 구매 최대 수량
+	private int cartListCount;	// 카트 상품 수량
+	private String itemImageNo;	// 상품 이미지 번호
+	private String imageNo;		// 이미지 번호
+	private String imagePath;	// 이미지 경로
+	private String imageName;	// 이미지 이름
+	public Cart() {
+	}
+	public Cart(String memberNo, String itemNo, String itemName, int itemPrice, int itemMax, int cartListCount,
+			String imageName) {
+		this.memberNo = memberNo;
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemMax = itemMax;
+		this.cartListCount = cartListCount;
+		this.imageName = imageName;
+	}
+	public Cart(String memberNo, String cartListNo, String itemNo, String itemName, int itemPrice, int itemMax, int cartListCount,
+			String imageName) {
+		this.memberNo = memberNo;
+		this.cartListNo = cartListNo;
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemMax = itemMax;
+		this.cartListCount = cartListCount;
+		this.imageName = imageName;
+	}
+	public Cart(String memberNo, String cartListNo, String itemNo, String itemName, int itemPrice, int itemMax,
+			int cartListCount, String itemImageNo, String imageNo, String imagePath, String imageName) {
+		this.memberNo = memberNo;
+		this.cartListNo = cartListNo;
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemMax = itemMax;
+		this.cartListCount = cartListCount;
+		this.itemImageNo = itemImageNo;
+		this.imageNo = imageNo;
+		this.imagePath = imagePath;
+		this.imageName = imageName;
+	}
+	public String getMemberNo() {
+		return memberNo;
+	}
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
+	public String getCartListNo() {
+		return cartListNo;
+	}
+	public void setCartListNo(String cartListNo) {
+		this.cartListNo = cartListNo;
+	}
+	public String getItemNo() {
+		return itemNo;
+	}
+	public void setItemNo(String itemNo) {
+		this.itemNo = itemNo;
+	}
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	public int getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+	public int getItemMax() {
+		return itemMax;
+	}
+	public void setItemMax(int itemMax) {
+		this.itemMax = itemMax;
+	}
+	public int getCartListCount() {
+		return cartListCount;
+	}
+	public void setCartListCount(int cartListCount) {
+		this.cartListCount = cartListCount;
+	}
+	public String getItemImageNo() {
+		return itemImageNo;
+	}
+	public void setItemImageNo(String itemImageNo) {
+		this.itemImageNo = itemImageNo;
+	}
+	public String getImageNo() {
+		return imageNo;
+	}
+	public void setImageNo(String imageNo) {
+		this.imageNo = imageNo;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	@Override
+	public String toString() {
+		return "Cart [memberNo=" + memberNo + ", cartListNo=" + cartListNo + ", itemNo=" + itemNo + ", itemName="
+				+ itemName + ", itemPrice=" + itemPrice + ", itemMax=" + itemMax + ", cartListCount=" + cartListCount
+				+ ", itemImageNo=" + itemImageNo + ", imageNo=" + imageNo + ", imagePath=" + imagePath + ", imageName="
+				+ imageName + "]";
+	}
 }
