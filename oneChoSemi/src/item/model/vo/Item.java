@@ -1,24 +1,30 @@
 package item.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Item {
+public class Item implements Serializable {
 	
-	private String itemNo;
-	private String itemName;
-	private String itemCategory;
-	private int itemKeywordNo;
-	private int itemPrice;
-	private int itemDiscount;
-	private int itemRate;
-	private int itemStock;
-	private String itemDisplay;
-	private String itemInfo;
-	private Date CDate;
-	private Date UDate;
-	private int SCount;
-	private int itemMax;
-	private String itemSale;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7288938816876895976L;
+	private String itemNo;//상품 번호(식별자)
+	private String itemName;//상품 이름
+	private String itemCategory;//카테고리
+	private String itemKeywordNo;//키워드
+	private int itemPrice;//가격
+	private int itemDiscount;//할인
+	private int itemRate;//평점
+	private int itemStock;//재고
+	private String itemDisplay;//전시상태 여부
+	private String itemInfo;//세부 정보
+	private Date CDate;//생성일
+	private Date UDate;//수정일
+	private int itemMax;//최대 구매 가능 수량
+	private String itemSale;//삭제 여부 
+
 	
 	
 	public Item() {
@@ -26,9 +32,40 @@ public class Item {
 	}
 
 
-	public Item(String itemNo, String itemName, String itemCategory, int itemKeywordNo, int itemPrice, int itemDiscount,
-			int itemRate, int itemStock, String itemDisplay, String itemInfo, Date cDate, Date uDate, int itemMax,
-			String itemSale) {
+	public Item(String itemName, String itemCategory, String itemKeywordNo, int itemPrice, int itemDiscount,
+			int itemStock, String itemDisplay, String itemInfo, int itemMax) {
+		super();
+		this.itemName = itemName;
+		this.itemCategory = itemCategory;
+		this.itemKeywordNo = itemKeywordNo;
+		this.itemPrice = itemPrice;
+		this.itemDiscount = itemDiscount;
+		this.itemStock = itemStock;
+		this.itemDisplay = itemDisplay;
+		this.itemInfo = itemInfo;
+		this.itemMax = itemMax;
+	}
+	
+	
+
+
+	public Item(String itemName, String itemCategory, String itemKeywordNo, int itemPrice, int itemDiscount,
+			String itemDisplay, String itemInfo, int itemMax) {
+		super();
+		this.itemName = itemName;
+		this.itemCategory = itemCategory;
+		this.itemKeywordNo = itemKeywordNo;
+		this.itemPrice = itemPrice;
+		this.itemDiscount = itemDiscount;
+		this.itemDisplay = itemDisplay;
+		this.itemInfo = itemInfo;
+		this.itemMax = itemMax;
+	}
+
+
+	public Item(String itemNo, String itemName, String itemCategory, String itemKeywordNo, int itemPrice,
+			int itemDiscount, int itemRate, int itemStock, String itemDisplay, String itemInfo, Date cDate, Date uDate,
+			int itemMax, String itemSale) {
 		super();
 		this.itemNo = itemNo;
 		this.itemName = itemName;
@@ -77,12 +114,12 @@ public class Item {
 	}
 
 
-	public int getItemKeywordNo() {
+	public String getItemKeywordNo() {
 		return itemKeywordNo;
 	}
 
 
-	public void setItemKeywordNo(int itemKeywordNo) {
+	public void setItemKeywordNo(String itemKeywordNo) {
 		this.itemKeywordNo = itemKeywordNo;
 	}
 
@@ -195,6 +232,12 @@ public class Item {
 				+ itemInfo + ", CDate=" + CDate + ", UDate=" + UDate + ", itemMax=" + itemMax + ", itemSale=" + itemSale
 				+ "]";
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
