@@ -415,10 +415,14 @@
                             <hr>
                             <div class="row attachPhoto-modal">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type="file" id="reviewPhoto-file" hidden>
 =======
                                 <input type="file" id="reviewPhoto-file">
 >>>>>>> branch 'DEV_KKS' of https://github.com/1person1plant/oneChoSemi.git
+=======
+                                <input type="file" id="reviewPhoto-file" hidden>
+>>>>>>> refs/remotes/origin/master
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center">

@@ -21,8 +21,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <style>
 /* font start */
-            @font-face {
-                font-family: 'basicFont';
+@font-face {
+        font-family: 'basicFont';
                 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
                 font-weight: normal;
                 font-style: normal;
@@ -59,6 +59,8 @@
 <%@ include file="../common/header.jsp" %>
 <section>
 <!--SEARCH-->
+
+		
             <div class="container item-search">
                 <div class="row title-row">
                     <p class="h1">SEARCH</p>
@@ -94,11 +96,13 @@
             </script>
         
             <!--BEST-->
+            <form>
             <div class="container item-container">
                 <div class="row title-row">
                     <h1 class="display-6">BEST</h1>
                 </div>
                 <div class="row item-row">
+                <%}else {%>                
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
@@ -112,6 +116,7 @@
                             </div>
                         </div>
                     </div>
+                <%} %>
                     <div class="col-sm item-col">
                         <div class="card item-card">
                             <div class="card-image-zoom">
@@ -153,6 +158,7 @@
                     </div>
                 </div>
             </div>
+            </form>
 
             <!--ALL-->
             <div class="container item-container">
