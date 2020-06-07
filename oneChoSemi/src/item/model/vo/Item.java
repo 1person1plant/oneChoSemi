@@ -16,6 +16,7 @@ public class Item {
 	private String itemInfo;
 	private Date CDate;
 	private Date UDate;
+	private int SCount;
 	private int itemMax;
 	private String itemSale;
 	

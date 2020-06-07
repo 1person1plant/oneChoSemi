@@ -1,36 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="member.model.vo.Member"%>
 <%
+	Member loginUser = null;
 	boolean result = false;
 	String adminChk = "";
-	
-	Member loginUser = (Member)session.getAttribute("loginUser");
-//	String admin2 = loginUser.getMemberAdmin();
-//	String admin1 = ((Member)session.getAttribute("loginUser")).getMemberAdmin();
-//	System.out.println("admin1 " + admin1);
-	adminChk = (String)session.getAttribute("admin");
-	if(loginUser == null){
-		System.out.println("admin " + adminChk);
-		System.out.println("result1 " + result);
-		result = true;
-	} else {
-		System.out.println("admin " + adminChk);
-		System.out.println("result2 " + result);
-		result = false;
+	String userNo = "";
+	if(session!=null || !request.isRequestedSessionIdValid()){
+		loginUser = (Member)session.getAttribute("loginUser");
+		System.out.println("로그인 유저 정보 : " + loginUser);
+		if(loginUser == null){
+			result = true;
+		} else {
+			userNo = loginUser.getMemberNo();
+			System.out.println("userNo " + userNo);
+			adminChk = loginUser.getMemberAdmin();
+			result = false;
+		}
+		System.out.println("result " + result);
 	}
-	System.out.println("result " + result);
-	
-//	if(session==null || !request.isRequestedSessionIdValid()){
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		adminChk = (String)session.getAttribute("adminChk");
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result1 " + result);
-//		result = true;
-//	} else {
-//		System.out.println("admin " + adminChk);
-//		System.out.println("result2 " + result);
-//		result = false;
-//	}
-//	System.out.println("result3 " + result);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -262,21 +248,23 @@
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        <ul class="navbar-nav ml-auto">
 		            <li class="nav-item">
-		                <a class="nav-link" onclick="document.getElementById('loginEx').style.display='block'">로그인</a>
+		                <a id="loginBtn" class="nav-link" style="cursor: pointer" data-toggle="modal" data-target="#exampleModal">로그인</a>
 		            </li>
 		            <li class="nav-item">
-		                <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
+		                <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
 		            </li>
 		        </ul>
 		    </div>
 		</nav>
-
-        <div id="loginSample"><!-- 로그인 샘플 시작 -->
+		
+    
+    <!-- 로그인 모달 붙이기 -->
+    <%@ include file="../member/login.jsp" %>
+<%--         <div id="loginSample"><!-- 로그인 샘플 시작 -->
 	        <div id="loginEx" class="modal">
 			  <form class="modal-content animate" action = "<%=request.getContextPath() %>/login.me" method="post" onsubmit="return validate();">
 			    <div class="imgcontainer">
 			      <span onclick="document.getElementById('loginEx').style.display='none'" class="loginSample_close" title="Close Modal">&times;</span>
-			      <img src="<%=request.getContextPath() %>/sample/img_avatar2.png" alt="Avatar" class="avatar">
 			    </div>
 			
 			    <div class="container">
@@ -298,22 +286,26 @@
 			    </div>
 			  </form>
 			</div>
-        </div><!-- 로그인 샘플 끝 -->
+        </div><!-- 로그인 샘플 끝 --> --%>
 	<%} else { %>
 	<!-- 로그인 성공 -->
 		   <nav class="navbar navbar-expand navbar-light" id="navbar-top">
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		            <ul class="navbar-nav ml-auto">
+		            	<li class="nav-item">
+							<label><%=loginUser.getMemberName() %>님의 방문을 환영합니다.</label>
+						</li>
 		            	<%if(adminChk.equals("Y")){ %>
 						<li class="nav-item">
-		                    <a class="nav-link" href="#">관리자 페이지</a>
+		                    <a class="nav-link" style="cursor: pointer" href="#">관리자 페이지</a>
 		                </li>
 		                <%} %>
 		                <li class="nav-item">
-		                    <a class="nav-link" onclick="logout();">로그 아웃</a>
+		                	<input type="hidden" id="userNo" value="<%=userNo %>"> <!-- 로그인유저 번호 저장 -->
+		                    <a class="nav-link" style="cursor: pointer" onclick="logout();">로그 아웃</a>
 		                </li>
 		                <li class="nav-item">
-		                    <a class="nav-link" onclick="myPageBtn();">마이페이지</a>
+		                    <a class="nav-link" style="cursor: pointer" onclick="myPageBtn();">마이페이지</a>
 		                </li>
 		            </ul>
 		        </div>
@@ -321,7 +313,6 @@
 	<%} %>
 		</div>
     </header>
-    
     <!-- sticky-top은 header안에서 작동안함 -->
     <!--하단 nav-->
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" id="navbar-bot">
@@ -348,7 +339,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-3">
-                    <a class="nav-link" onclick="goCart();"><i class="fas fa-cart-plus"></i></a>
+                    <a class="nav-link" style="cursor: pointer" onclick="goCart();"><i class="fas fa-cart-plus"></i></a>
                 </li>
             </ul>
 
@@ -401,19 +392,26 @@
         }
         
         function logIn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+   			<%} %>
 		}
         function myPageBtn(){
-			location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+        	<%if(result){%>
+    			document.getElementById('loginEx').style.display='block';
+			<%} else {%>
+        		location.href="<%=request.getContextPath()%>/views/myPage/grade.jsp";
+	   		<%} %>
 		}
-        function goCart(){
-        	if(result){
-        		alert("!!");
-				location.href="<%=request.getContextPath()%>/views/cart/cart.jsp";
-        	} else {
-        		document.getElementById('loginEx').style.display='block';
-        		alert("!");
-        	}
+        function goCart(){	// 만드는 중...
+        	var userNo = $("#userNo").val();
+        	<%if(result){%>
+        		$("#loginBtn").click();
+			<%} else {%>
+				location.href="<%=request.getContextPath()%>/cart.ca?userNo=" + userNo;
+       		<%} %>
 		}
         
 		function validate(){ // 로그인
