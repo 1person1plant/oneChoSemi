@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class CommonFilter
  */
-@WebFilter(filterName = "encoding", urlPatterns="/*")
+@WebFilter(filterName="encoding",urlPatterns="/*")
 public class CommonFilter implements Filter {
 
     /**
@@ -33,12 +33,11 @@ public class CommonFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// 1. 뷰에서 전달받은 값에 한글이 있는 경우
+		
 		request.setCharacterEncoding("UTF-8");
 		
-		// 2. 뷰로 전달할 값에 한글이 있는 경우
-		response.setContentType("text/html; charset=utf-8");
-				
+		response.setContentType("text/html;charset=utf-8");
+		
 		chain.doFilter(request, response);
 	}
 
